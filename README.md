@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-different-buttons-styles
+Styles for all website elements!
 ========================
 
 this repo contains many styles of button!
