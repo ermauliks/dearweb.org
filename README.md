@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Styles for all website elements!
   1. Buttons
   2. Text
@@ -7,5 +6,4 @@ Styles for all website elements!
   5. Quick Links
   6. Search Box
   7. Footer
-========================
->>>>>>> de708ec84f687959776b4871c9ec2f4a6a3ff229
+  8. Table
