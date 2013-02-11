@@ -9,5 +9,5 @@
     7. Footer
     8. Table
 
-2. UI/ UX Events information happening/ Going to happen in the India 
+2. Information of UI/ UX Events happening/ Going to happen in the India 
    
