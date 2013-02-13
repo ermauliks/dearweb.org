@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>Buttons</title>
+	<script type="text/javascript" src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+	<script type="text/javascript" src='js/core1.js'></script>
+	<script type="text/javascript" src='js/bootstrap-popovers.js'></script>
+	<script type="text/javascript" src='js/bootstrap.js'></script>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<style type="text/css">
+	.cssProperty .key{
+		color: #aaa;
+	}
+	.popover{
+		max-height: 400px;
+		overflow: auto;
+		max-width: 500px;
+	}
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#buttons-holder a").each(function(){
+				$(this).popover({placement:'bottom'}).attr('data-content', objToString($(this).getStyleObject()));	
+			})
+		    function objToString (obj) {
+		        var str = '';
+		        for (var p in obj) {
+		            if (obj.hasOwnProperty(p)) {
+		            	str += p + ':' + obj[p] + ';\n';
+		            }
+		        }
+		        return str;
+	        }		     
+		});	
+	</script>
+</head>
+<body>
+	<div id='buttons-holder' style='margin-top:40px;'>
+		<a href="#" class="btn btn-danger" rel="popover" data-original-title="Style">Click to view style</a>  
+		<a href="#" class="btn btn-success" rel="popover" data-original-title="Style">Click to view style</a>  
+		<a href="#" class="btn btn-warning" rel="popover" data-original-title="Style">Click to view style</a>  
+	</div>
+</body>
+</html>
