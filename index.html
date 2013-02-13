@@ -1,1 +1,48 @@
-My GitHub Page
+<html>
+<head>
+	<title>Buttons</title>
+	<script type="text/javascript" src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+	<script type="text/javascript" src='js/core1.js'></script>
+	<script type="text/javascript" src='js/bootstrap-popovers.js'></script>
+	<script type="text/javascript" src='js/bootstrap.js'></script>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/fewmore.css">
+	<link rel="stylesheet" type="text/css" href="css/core.css">
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#buttons-holder li>*").each(function(){
+				$(this).popover({placement:'bottom'}).attr('data-content', objToString($(this).getStyleObject()));	
+			})
+		    function objToString (obj) {
+		        var str = '';
+		        for (var p in obj) {
+		            if (obj.hasOwnProperty(p)) {
+		            	str += p + ':' + obj[p] + ';\n';
+		            }
+		        }
+		        return str;
+	        }		     
+		});	
+	</script>
+</head>
+<body>
+	<ul id='buttons-holder' style='margin-top:40px;'>
+		<li><button href="#" class="btn btn-danger" rel="popover" data-original-title="Style">Twitter Danger</button></li>
+		<li><button href="#" class="btn btn-success" rel="popover" data-original-title="Style">Twitter Success</button></li>  
+		<li><button href="#" class="btn btn-warning" rel="popover" data-original-title="Style">Twitter Warning</button></li>  
+		<li><button class="minimal" rel="popover" data-original-title="Style">Minimal</button></li>  
+		<li><button class="clean-gray" rel="popover" data-original-title="Style">Clean Grey</button></li>  
+		<li><button class="cupid-green" rel="popover" data-original-title="Style">Cupid Green</button></li>  
+		<li><button class="cupid-blue" rel="popover" data-original-title="Style">Cupid Blue</button></li>  
+		<li><button class="blue-pill" rel="popover" data-original-title="Style">Blue Pill</button></li>  
+		<li><button class="thoughtbot" rel="popover" data-original-title="Style">ThoughtBot</button></li>  
+		<li><button class="purple-candy" rel="popover" data-original-title="Style">Purple Candy</button></li>  
+		<li><button class="shiny-blue" rel="popover" data-original-title="Style">Shiny Blue</button></li>  
+		<li><button class="download-itunes" rel="popover" data-original-title="Style">Download iTunes</button></li>  
+		<li><button class="skip" rel="popover" data-original-title="Style">Skip</button></li>  
+		<li><button class="indent" rel="popover" data-original-title="Style">Indent</button></li>  
+	</ul>
+</body>
+</html>
