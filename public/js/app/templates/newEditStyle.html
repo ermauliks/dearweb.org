@@ -1,0 +1,13 @@
+<!-- Define the form to create a list -->
+<form class="edit-styles-form">
+    <legend><%= sData ? 'Edit' : 'New' %> Style</legend>
+    <label>Element</label>
+    <input name="element" type="text" value=<%= sData ? htmlEncode(sData.element) : '' %>>
+    <label>Style</label>
+    <textarea name="style" rows="20" cols="10"><%= sData ? htmlEncode(sData.style) : '' %></textarea>
+    <button type="submit" class="btn"><%= sData ? 'Update' : 'Create' %></button>
+    <% if(sData) { %>
+        <input type="hidden" name="id" value=<%= htmlEncode(sData._id) %> />
+        <button type="button" data-style-id=<%= htmlEncode(sData._id) %> class="btn btn-danger delete">Delete</button>
+   <% }; %>
+</form>

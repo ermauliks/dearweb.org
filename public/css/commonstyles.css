@@ -1,0 +1,23 @@
+/* All custom css for entire project */
+
+/* Copied from core.css file */
+.cssProperty .key{
+	color: #aaa;
+}
+.popover{
+	max-height: 400px;
+	overflow: auto;
+	width: 500px;
+}
+#buttons-holder{
+	list-style: none;	
+}
+#buttons-holder li{
+	padding: 5px;
+	margin:5px;
+	height: 100px;
+	min-width: 100px;
+	position: relative;
+	background: #eee;
+	display: inline-block;
+}

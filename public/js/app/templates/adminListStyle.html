@@ -1,0 +1,20 @@
+<!-- HTML Template -->
+<a href="#/admin/new" class="btn btn-primary">Add CSS</a>
+<!-- Table for listing styles -->
+<hr />
+<table class="table striped">
+  <thead>
+    <tr>
+      <th>Element Name</th><th>Style Information</th><th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% _.each(stylesData, function(data) { %>
+      <tr>
+        <td><%= htmlEncode(data.element) %></td>
+        <td><%= htmlEncode(data.style) %></td>
+        <td><a class="btn" href="#/admin/edit/<%= data._id %>">Edit</a></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>

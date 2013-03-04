@@ -1,0 +1,151 @@
+// DEPENDENCIES
+// ============
+var express = require("express"),
+    http = require("http"),
+    port = (process.env.PORT || 8001),
+    server = module.exports = express();
+
+var mongo = require('mongodb');
+
+var DBServer = mongo.Server,
+    Db = mongo.Db,
+    BSON = mongo.BSONPure;
+
+var dbserver = new DBServer('localhost', 27017, {auto_reconnect: true});
+db = new Db('test', dbserver, {safe: true});
+
+db.open(function(err, db) {
+    if(!err) {
+        console.log("Connected to 'test' database");
+        db.collection('stylesDB', {safe:true}, function(err, collection) {
+            if (err) {
+                console.log("The 'stylesDB' collection doesn't exist. Creating it with sample data...");
+                //populateDB();
+            }
+        });
+    }
+});
+
+//set up middleware
+var allowCrossDomain = function(req, res, next) {
+    var oneof = false;
+    if(req.headers.origin) {
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        oneof = true;
+    }
+    if(req.headers['access-control-request-method']) {
+        res.header('Access-Control-Allow-Methods', req.headers['access-control-request-method']);
+        oneof = true;
+    }
+    if(req.headers['access-control-request-headers']) {
+        res.header('Access-Control-Allow-Headers', req.headers['access-control-request-headers']);
+        oneof = true;
+    }
+    if(oneof) {
+        res.header('Access-Control-Max-Age', 60 * 60 * 24 * 365);
+    }
+
+    // intercept OPTIONS method
+    if (oneof && req.method == 'OPTIONS') {
+        res.send(200);
+    }
+    else {
+        next();
+    }
+}    
+
+// SERVER CONFIGURATION
+// ====================
+server.configure(function() {
+  server.use(express["static"](__dirname + "/../public"));
+  server.use(express.bodyParser());
+  server.use(express.methodOverride());
+  server.use(allowCrossDomain);
+  server.use(server.router);
+});
+
+// SERVER
+// ======
+//Function returns all the styles
+var listStyles = function (req, res) {
+  db.collection('stylesDB', function(err, collection) {
+        collection.find().toArray(function(err, items) {
+            res.send(items);
+        });
+    });
+}
+
+//Function for adding a style
+var createStyle = function (req, res) {
+  var style = req.body;
+  console.log('Adding Style: ' + JSON.stringify(style));
+  db.collection('stylesDB', function (err, collection) {
+    collection.insert(style, {safe: true}, function(err, result) {
+       if(err) {
+        res.send({'error': 'An error has occured'});
+      }
+      else {
+        console.log('Success: ' + JSON.stringify(result[0]));
+        res.send(result[0]);
+      }
+    });   
+  });
+}
+
+//Function returns style details based on id
+var styleDetails = function (req, res) {
+  var id = req.params.id;
+    console.log('Retrieving style: ' + id);
+    db.collection('stylesDB', function(err, collection) {
+        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
+            res.send(item);
+        });
+    });
+};
+
+//Function delete style details based on id
+var deleteStyle = function (req, res) {
+    var id = req.params.id;
+    console.log('Deleting Style: ' + id);
+    db.collection('stylesDB', function(err, collection) {
+        collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
+            if (err) {
+                res.send({'error':'An error has occurred - ' + err});
+            } else {
+                console.log('' + result + ' document(s) deleted');
+                res.send(req.body);
+            }
+        });
+    });
+};
+
+//Function update style details based on id
+var updateStyle = function (req, res) {
+    var id = req.params.id;
+    var style = req.body;
+    delete style._id;
+    console.log('Updating style: ' + id);
+    console.log(JSON.stringify(style));
+    db.collection('stylesDB', function(err, collection) {
+        collection.update({'_id':new BSON.ObjectID(id)}, style, {safe:true}, function(err, result) {
+            if (err) {
+                console.log('Error updating style: ' + err);
+                res.send({'error':'An error has occurred'});
+            } else {
+                console.log('' + result + ' document(s) updated');
+                res.send(style);
+            }
+        });
+    });
+};
+
+server.get('/styles', listStyles);
+server.get('/styles/:id', styleDetails);
+server.del('/styles/:id', deleteStyle);
+server.post('/styles', createStyle);
+server.put('/styles/:id', updateStyle);
+
+// Start Node.js Server
+http.createServer(server).listen(port);
+
+console.log('Welcome to Backbone-Require-Boilerplate!\n\nPlease go to http://localhost:' + port + ' to start using Require.js and Backbone.js');
