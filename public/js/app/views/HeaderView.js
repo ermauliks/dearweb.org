@@ -7,7 +7,7 @@ define(["jquery", "backbone", "text!templates/headerTemplate.html"],
         var HeaderView = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: ".navbar",
+            el: ".top-header",
 
             // View constructor
             initialize: function() {
