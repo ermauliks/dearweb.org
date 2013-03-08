@@ -7,7 +7,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
         var IndexView = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: ".example",
+            el: ".page",
 
             // View constructor
             initialize: function() {
