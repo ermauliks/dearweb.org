@@ -1,12 +1,13 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery", "backbone", "models/Styles", "views/IndexView", "views/ButtonView" ,"views/admin/AdminListView", "views/NewEditStyleView", "collections/Collection"],
+define(["jquery", "backbone", "models/Styles", "views/HeaderView", "views/IndexView", "views/ButtonView" ,"views/admin/AdminListView", "views/NewEditStyleView", "collections/Collection"],
         
-    function($, Backbone, Model, IndexView, ButtonView, AdminListView, NewEditView, Collection) {
+    function($, Backbone, Model, HeaderView, IndexView, ButtonView, AdminListView, NewEditView, Collection) {
         var DesktopRouter = Backbone.Router.extend({
             initialize: function() {
                 // Tells Backbone to start watching for hashchange events
                 Backbone.history.start();
+                new HeaderView();
             },
             // All of your Backbone Routes (add more)
             routes: {                
