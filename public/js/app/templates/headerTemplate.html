@@ -8,10 +8,31 @@
     <a class="brand" href="#">Project name</a>
     <div class="nav-collapse collapse">
       <ul class="nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li class="nav-button active"><a href="#">Buttons</a></li>
+        <li class='nav-combobox'><a href="#"></a></li>
+        <li class='nav-breadcrumb'><a href="#"></a></li>
+        <li class='nav-radiobutton'><a href="#"></a></li>
+        <li class='nav-combobox'><a href="#"></a></li>
+        <li class='nav-textbox'><a href="#"></a></li>
+        <li class='nav-popovers'><a href="#"></a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
 </div>
+<script type="text/javascript">
+$(function(){
+  adjustNavWidth();
+  function adjustNavWidth(){
+      var widthToAssign = $(window).width()/$('.nav li').length;
+      $('.nav li').each(function(){
+        $(this).width(widthToAssign);
+      });
+  }
+
+  $(window).resize(function(){
+    adjustNavWidth();
+  });
+
+});
+
+</script>
