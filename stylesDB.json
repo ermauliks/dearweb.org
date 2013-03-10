@@ -1,5 +1,1 @@
-{ "_id" : { "$oid" : "51275e34ac63810c0c000001" }, "element" : "black", "style" : "{color:black}", "id" : "51275e34ac63810c0c000001" }
-{ "_id" : { "$oid" : "51275e5dac63810c0c000002" }, "element" : "green", "style" : "{color: green2}", "id" : "51275e5dac63810c0c000002" }
-{ "element" : "gradient button", "style" : "{ color: red; background: blue;}", "_id" : { "$oid" : "512b986b9dbd3c1823000003" } }
-{ "_id" : { "$oid" : "512efa863fb1ea9c16000001" }, "element" : "gradient", "style" : "{background: red; font-family:arial}", "id" : "512efa863fb1ea9c16000001" }
-{ "_id" : { "$oid" : "512f7a20c265d4401b000001" }, "id" : "512f7a20c265d4401b000001", "element" : "99999dfsfs", "style" : "99999fsfsfs" }
+{ "_id" : { "$oid" : "51275e34ac63810c0c000001" }, "input_type" : "button", "class_name" : "btn-danger", "css_hover" : "--", "css_active" : "--", "css_disabled" : "--" ,"element_html" : "---", "id" : "51275e34ac63810c0c000001" }

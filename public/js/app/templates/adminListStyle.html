@@ -5,14 +5,14 @@
 <table class="table striped">
   <thead>
     <tr>
-      <th>Element Name</th><th>Style Information</th><th></th>
+      <th>Element Tye</th><th>Class</th><th></th>
     </tr>
   </thead>
   <tbody>
     <% _.each(stylesData, function(data) { %>
       <tr>
-        <td><%= htmlEncode(data.element) %></td>
-        <td><%= htmlEncode(data.style) %></td>
+        <td><%= htmlEncode(data.input_type) %></td>
+        <td><%= htmlEncode(data.class) %></td>
         <td><a class="btn" href="#/admin/edit/<%= data._id %>">Edit</a></td>
       </tr>
     <% }); %>

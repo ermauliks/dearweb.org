@@ -11,6 +11,10 @@ var DBServer = mongo.Server,
     Db = mongo.Db,
     BSON = mongo.BSONPure;
 
+var fs = require('fs'),
+    path = require('path'),
+    execution_status = 0;
+
 var dbserver = new DBServer('localhost', 27017, {auto_reconnect: true});
 db = new Db('test', dbserver, {safe: true});
 
@@ -68,8 +72,11 @@ server.configure(function() {
 // ======
 //Function returns all the styles
 var listStyles = function (req, res) {
+ //Create the CSS file - button.css which will be at front-end
+ createCssFile();
+
   db.collection('stylesDB', function(err, collection) {
-        collection.find().toArray(function(err, items) {
+        collection.find().toArray(function(err, items) {            
             res.send(items);
         });
     });
@@ -113,6 +120,8 @@ var deleteStyle = function (req, res) {
                 res.send({'error':'An error has occurred - ' + err});
             } else {
                 console.log('' + result + ' document(s) deleted');
+                //Regenerate the CSS file
+                 execution_status = 1 ;
                 res.send(req.body);
             }
         });
@@ -132,12 +141,58 @@ var updateStyle = function (req, res) {
                 console.log('Error updating style: ' + err);
                 res.send({'error':'An error has occurred'});
             } else {
-                console.log('' + result + ' document(s) updated');
+                console.log('' + result + ' document(s) updated');                
                 res.send(style);
             }
         });
     });
 };
+
+var createCssFile = function () {
+    var _filePath = path.resolve('./public/css/button.css');
+    
+    //Remove the content
+    fs.openSync(_filePath, 'w')
+   
+    db.collection('stylesDB', function(err, collection) {
+        //Loop through the data
+        var cssString;
+        collection.find().each(function(err, doc) {
+            if (doc != null) {
+                //Holds CSS data from Document
+                cssString = doc.class_css + doc.class_hover + doc.class_active + doc.class_disabled; 
+            } 
+
+            //Append data to the file
+            fs.appendFileSync(_filePath, cssString);
+            //cssString = "";
+        });  
+    });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 server.get('/styles', listStyles);
 server.get('/styles/:id', styleDetails);
