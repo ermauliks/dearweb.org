@@ -623,6 +623,7 @@ a:hover {
 }
 
 .container-fluid {
+  margin-top: 60px;
   *zoom: 1;
 }
 
