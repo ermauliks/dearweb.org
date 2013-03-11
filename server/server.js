@@ -149,9 +149,10 @@ var updateStyle = function (req, res) {
 };
 
 var createCssFile = function () {
+    //Set the path of the CSS file
     var _filePath = path.resolve('./public/css/button.css');
     
-    //Remove the content
+    //This will truncate the file if it exists and create it if it doesn't.
     fs.openSync(_filePath, 'w')
    
     db.collection('stylesDB', function(err, collection) {
@@ -162,10 +163,8 @@ var createCssFile = function () {
                 //Holds CSS data from Document
                 cssString = doc.class_css + doc.class_hover + doc.class_active + doc.class_disabled; 
             } 
-
-            //Append data to the file
+            //Append data to the file synchronously
             fs.appendFileSync(_filePath, cssString);
-            //cssString = "";
         });  
     });
 };
