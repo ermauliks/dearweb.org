@@ -1,21 +1,49 @@
 <!-- Define the form to create a list -->
 <form class="edit-styles-form">
-    <legend><%= sData ? 'Edit' : 'New' %> Style</legend>
-    <label>Input Type</label>
-    <input name="input_type" type="text" value=<%= sData ? htmlEncode(sData.input_type) : '' %>>
-    <label>Class Name</label>
-    <textarea name="class" rows="2" cols="10"><%= sData ? htmlEncode(sData.class) : '' %></textarea>
-    <label>Class CSS</label>
-    <textarea name="class_css" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_css) : '' %></textarea>
-    <label>Class Hover</label>
-    <textarea name="class_hover" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_hover) : '' %></textarea>
-    <label>Class Active</label>
-    <textarea name="class_active" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_active) : '' %></textarea>
-    <label>Class Disabled</label>
-    <textarea name="class_disabled" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_disabled) : '' %></textarea>
-    <label>Input HTML</label>
-    <textarea name="element_html" rows="5" cols="10"><%= sData ? htmlEncode(sData.element_html) : '' %></textarea>
-    <button type="submit" class="btn"><%= sData ? 'Update' : 'Create' %></button>
+    
+    <h3><%= sData ? 'Edit' : 'New' %> Style</h3>
+    
+    <fieldset>
+        <label>Input Type</label>
+        <input name="input_type" type="text" value=<%= sData ? htmlEncode(sData.input_type) : '' %>>
+    </fieldset>
+
+    <fieldset>
+        <label>Class Name</label>
+        <textarea name="class" rows="2" cols="10"><%= sData ? htmlEncode(sData.class) : '' %></textarea>
+    </fieldset>
+
+    <fieldset>
+        <table style=''>
+            <tr>
+                <td >
+                     <label>Class CSS</label>
+                    <textarea name="class_css" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_css) : '' %></textarea>
+                </td>
+                <td>
+                    <label>Class Hover</label>
+                    <textarea name="class_hover" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_hover) : '' %></textarea>
+               </td>
+                <td>                
+                    <label>Class Active</label>
+                    <textarea name="class_active" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_active) : '' %></textarea>
+               </td>
+                <td>                
+                    <label>Class Disabled</label>
+                    <textarea name="class_disabled" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_disabled) : '' %></textarea>
+                
+                </td>
+            </tr>
+        </table>    
+       
+    </fieldset>
+
+    <fieldset>
+        <label>Input HTML</label>
+        <textarea name="element_html" rows="5" cols="10"><%= sData ? htmlEncode(sData.element_html) : '' %></textarea>
+    </fieldset>
+    
+    <button type="submit" class="btn btn-success"><%= sData ? 'Update' : 'Create' %></button>
     <% if(sData) { %>
         <input type="hidden" name="id" value=<%= htmlEncode(sData._id) %> />
         <button type="button" data-style-id=<%= htmlEncode(sData._id) %> class="btn btn-danger delete">Delete</button>
