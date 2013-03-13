@@ -24,13 +24,15 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
-
+html, body{
+	height: 100%;
+	background-color: #eee;
+}
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #333333;
-  background-color: #ffffff;
 }
 ol, ul {
 	list-style: none;
@@ -71,12 +73,21 @@ table {
 	background: #eee;
 	display: inline-block;
 }
-
 .nav {border-top: 20px solid #444;}
 
 .nav li{
 	float: left;
+	cursor: pointer;
 }
+.nav li a{
+	display: none;
+}
+.nav li:hover a{
+	text-align: center;
+	color: white;
+	display: block;
+}
+
 .edit-styles-form{
 	margin-left: 10px;
 	margin-right: 10px;
@@ -95,24 +106,6 @@ table {
 .nav-combobox{background:#21bcc8;padding: 5px 0; }
 .nav-textbox{background:#9a21c8;padding: 5px 0; }
 .nav-popovers{background:#bcc821;padding: 5px 0;}
-
-
-
-.footer{
-	padding: 15px;
-	background-color: #f7f7f7;
-	text-align: center;
-}
-
-.page .buttonArea {
-	float: left;
-	margin: 10px;
-}
-
-.page .buttonArea .thumbs {
-	padding: 20px;
-	background-color: #ccc;
-}
 
 /* ------  Codepen editor css  -------- */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600|Droid+Sans+Mono|Quicksand);
@@ -354,3 +347,26 @@ pre.language-css:focus {
 #codepen-footer,#codepen-footer *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}#codepen-footer{position:fixed;bottom:0;left:0;width:100%;padding:0 10px;height:30px;color:#eeeeee;background-color:#505050;background:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #505050), color-stop(100%, #383838));background:-webkit-linear-gradient(#505050,#383838);background:-moz-linear-gradient(#505050,#383838);background:-o-linear-gradient(#505050,#383838);background:linear-gradient(#505050,#383838);border-top:1px solid #000;border-bottom:1px solid #000;box-shadow:inset 0 1px 0 #6e6e6e,0 2px 2px rgba(0,0,0,0.4);font:12px/30px "Lucida Grande","Lucida Sans Unicode",Tahoma,sans-serif;line-height:30px}#codepen-footer a{color:#a7a7a7;text-decoration:none}#codepen-footer a:hover{color:white}#footer-right{position:absolute;right:5px;top:0}@media (max-width: 600px){#footer-right{display:none}}#bs-button{padding:1px 6px 2px 19px;background:url(/images/browserstack.png),-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff4d1), color-stop(100%, #c9b67b));background:url(/images/browserstack.png),-webkit-linear-gradient(#fff4d1,#c9b67b);background:url(/images/browserstack.png),-moz-linear-gradient(#fff4d1,#c9b67b);background:url(/images/browserstack.png),-o-linear-gradient(#fff4d1,#c9b67b);background:url(/images/browserstack.png),linear-gradient(#fff4d1,#c9b67b);background-position:4px center,center center;background-repeat:no-repeat;background-size:12px 12px,cover;border:0;font:11px "Lucida Grande","Lucida Sans Unicode",Tahoma,sans-serif;border-radius:5px}#bs-button:hover{background:url(/images/browserstack.png),#fff4d1;background-position:4px center,center center;background-repeat:no-repeat;background-size:12px 12px,cover}
 
 /* ------------------- Code pen editor ends ------------------- */
+
+.footer{
+	padding: 15px;
+	background-color: #f7f7f7;
+	text-align: center;
+}
+
+.page .buttonArea {
+	float: left;
+	margin: 10px;
+}
+
+.page .buttonArea .thumbs {
+	padding: 20px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	border-radius: 3px;
+	background-color: white;
+}
+.page .buttonArea .thumbs:hover {
+	border:1px solid #A0DB6C;
+}
+
