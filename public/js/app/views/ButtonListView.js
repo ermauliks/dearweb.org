@@ -1,8 +1,8 @@
 // ButtonListView.js - index.html listing for users
 // -------
-define(["jquery", "backbone", "models/ButtonsCollection", "views/ButtonView"],
+define(["jquery", "backbone", "models/ButtonsCollection", "views/ButtonView", "views/DisplayCssView"],
 
-    function($, Backbone, ButtonsCollection, ButtonView){
+    function($, Backbone, ButtonsCollection, ButtonView, DisplayCssView){
 
         var ButtonListView = Backbone.View.extend({
            // The DOM Element classes associated with this view
@@ -13,6 +13,18 @@ define(["jquery", "backbone", "models/ButtonsCollection", "views/ButtonView"],
                 //Assign the value to 'data' property
                 this.data = initialButtons;
                 this.render();
+            },
+
+            // View Event Handlers
+            events: {
+              "click .buttonArea .thumbs" : "showPopUp"
+            },
+
+            //Show the modal popup for styles code
+            showPopUp: function(ev) {
+                var _id = $(ev.currentTarget).find('button').attr('id');
+                var popup = new DisplayCssView({"id": _id});
+                popup.render().showModal();
             },
 
             // Renders the view's template to the UI

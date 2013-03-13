@@ -108,3 +108,8 @@ table {
 	float: left;
 	margin: 10px;
 }
+
+.page .buttonArea .thumbs {
+	padding: 20px;
+	background-color: #ccc;
+}
