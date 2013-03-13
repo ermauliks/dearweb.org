@@ -24,13 +24,15 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
-
+html, body{
+	height: 100%;
+	background-color: #eee;
+}
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #333333;
-  background-color: #ffffff;
 }
 ol, ul {
 	list-style: none;
@@ -71,12 +73,21 @@ table {
 	background: #eee;
 	display: inline-block;
 }
-
 .nav {border-top: 20px solid #444;}
 
 .nav li{
 	float: left;
+	cursor: pointer;
 }
+.nav li a{
+	display: none;
+}
+.nav li:hover a{
+	text-align: center;
+	color: white;
+	display: block;
+}
+
 .edit-styles-form{
 	margin-left: 10px;
 	margin-right: 10px;
@@ -111,5 +122,11 @@ table {
 
 .page .buttonArea .thumbs {
 	padding: 20px;
-	background-color: #ccc;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	border-radius: 3px;
+	background-color: white;
+}
+.page .buttonArea .thumbs:hover {
+	border:1px solid #A0DB6C;
 }
