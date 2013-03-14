@@ -361,6 +361,7 @@ pre.language-css:focus {
 
 .page .buttonArea .thumbs {
 	padding: 20px;
+	height: 31px;
 	border: 1px solid #ccc;
 	cursor: pointer;
 	border-radius: 3px;
