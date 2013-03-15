@@ -107,6 +107,23 @@ table {
 .nav-textbox{background:#9a21c8;padding: 5px 0; }
 .nav-popovers{background:#bcc821;padding: 5px 0;}
 
+/* Overrinding bootstrap css */
+#modalContainer .modal {
+  margin-top: 290px;
+}
+
+#modalCloseButton {
+  display: none;
+}
+
+.modal {
+  background-color: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: none !important;
+  border-radius: none !important;
+}
+
 /* ------  Codepen editor css  -------- */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600|Droid+Sans+Mono|Quicksand);
 .panel {
