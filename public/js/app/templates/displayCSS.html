@@ -3,7 +3,7 @@
       <div class="inside">
         <section class="result">
           <style scoped id="result_css">
-          	<%= sData.class_css + sData.class_hover + sData.class_active + sData.class_disabled %>
+          	<%= sData.class_css +'\n\n'+ sData.class_hover +'\n\n'+ sData.class_active +'\n\n'+ sData.class_disabled %>
           </style>
           <div id="result_html">
           	<button id="<%= htmlEncode(sData._id) %>" class="<%= htmlEncode(sData.class) %>" data-original-title="Style"><%= sData.class %></button>

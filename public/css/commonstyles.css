@@ -110,10 +110,13 @@ table {
 /* ------  Codepen editor css  -------- */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600|Droid+Sans+Mono|Quicksand);
 .panel {
-  max-width: 900px;
-  height: 400px;
-  margin: 10px auto;
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 10%;
+  bottom: 0;
+  left: 10%;
+  margin: auto;
+  height: 600px;
   -webkit-perspective: 1000px;
   -moz-perspective: 1000px;
   -ms-perspective: 1000px;
@@ -202,10 +205,13 @@ a {
   padding: 10px;
   overflow: hidden;
 }
-
+#css{
+  height: 400px;
+  overflow: auto;  
+}
 .column {
-  float: left;
-  width: 50%;
+  /*float: left;*/
+  /*width: 50%;*/
 }
 
 .cpen-button {
@@ -232,7 +238,7 @@ a {
 
 .result, .source {
   background: #fff;
-  margin: 20px;
+  margin: 5px;
   padding: 40px 20px 20px;
   position: relative;
 }
