@@ -1,2 +1,184 @@
+<div class='search-section-holder'>
+	<h2 style='text-align:center;'>because we know you are <span class='cyan'>consfused</span> :-)</h2>
+	<div class='search-element-holder'>
+		<div class='combobox'>
+			<i class='icon-element icon'/>
+			<h3>select element for you</h3>
+			<i class='icon-combo icon'/>
 
-<h1>Index Page</h1>
+			<div class='elementbox'>
+					<span>sample-element</span>
+					<span>sample-element</span>
+					<span>sample-element</span>
+					<span>sample-element</span>				
+				</ul>
+			</div>
+
+		</div>
+
+		<div class='combobox'>
+			<i class='icon-color icon'/>
+			<h3>choose color</h3>
+			<i class='icon-combo icon'/>
+
+			<div class='colorbox'>
+				<span>red</span>
+				<span>green</span>
+				<span>blue</span>
+				<span>orange</span>
+				<span>red</span>
+				<span>green</span>
+				<span>blue</span>
+				<span>orange</span>
+				<span>red</span>
+				<span>green</span>
+				<span>blue</span>
+				<span>orange</span>
+				<span>red</span><span>green</span><span>blue</span><span>orange</span>
+				<span>red</span><span>green</span><span>blue</span><span>orange</span>
+			</div>
+
+
+		</div>
+		<button class='search'>Go</button>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+	$(function(){
+		$('.colorbox span').each(function(){
+			$(this).attr('style','background-color:'+ $(this).text() + ';color:'+ $(this).text());
+
+		})
+		$('div.combobox').each(function(){
+			$(this).find('div').hide();
+			$(this).find('span').on('click',function(){
+				$(this).parent().parent().find('h3').text($(this).text());
+				$(this).parent().hide();
+			});
+			$(this).on('mouseover', function(){$(this).find('div').show();})
+				   .on('mouseout', function(){$(this).find('div').hide();})
+		});
+	});
+</script>
+
+
+<style type="text/css">
+.search-element-holder{
+		margin-top: 80px;
+}
+.search{
+	padding: 10px;
+	float: right;
+}
+
+          	button {
+  background: #e3e3e3;
+  border: 1px solid #bbb;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 1px 1px #f6f6f6;
+  -moz-box-shadow: inset 0 0 1px 1px #f6f6f6;
+  box-shadow: inset 0 0 1px 1px #f6f6f6;
+  color: #333;
+  font: bold 12px "helvetica neue", helvetica, arial, sans-serif;
+  line-height: 1;
+  padding: 8px 0 9px;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  width: 100px; }
+
+button:hover {
+    background: #d9d9d9;
+    -webkit-box-shadow: inset 0 0 1px 1px #eaeaea;
+    -moz-box-shadow: inset 0 0 1px 1px #eaeaea;
+    box-shadow: inset 0 0 1px 1px #eaeaea;
+    color: #222;
+    cursor: pointer; }
+
+  button:active {
+    background: #d0d0d0;
+    -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
+    -moz-box-shadow: inset 0 0 1px 1px #e3e3e3;
+    box-shadow: inset 0 0 1px 1px #e3e3e3;
+    color: #000; }
+
+	.cyan{
+		color: #21bcc8;
+	}
+	h2{
+		font-weight: normal;
+	}
+	.search-section-holder{
+		width: 700px;
+		margin: 0 auto;
+		margin-top:100px;
+	}
+	.colorbox, .elementbox{
+		clear: both;
+	}
+	.elementbox span{
+		cursor: pointer;
+		padding: 5px;
+		display: block;
+		border-bottom:1px; 
+	}
+	.elementbox span:hover{
+		background-color: #ddd;
+	}
+	.combobox>i{
+		float: left;
+	}
+	.combobox{
+		background-color: white;
+		margin-left: 10px;
+	}
+	.combobox>h3{
+		margin: 0;
+		line-height: 20px;
+		float: left;
+		font-size: 1.4em;
+		font-weight: normal;
+		padding: 5px;
+	}
+	.colorbox span{
+		opacity: 0.7;
+		height: 10px;
+		width: 10px;
+		overflow: hidden;
+		margin: 2px;
+		border:1px solid transparent;
+		cursor: pointer;
+		padding: 10px;
+		float: left;
+	}
+	.colorbox span:hover{
+		border:1px solid #888;
+		opacity: 1;
+	}
+	.combobox{
+		padding:5px;
+		width: 270px;
+		float: left;
+		border:1px solid #ccc;
+	}
+	
+	.icon{
+		height: 24px;
+		width: 24px;
+		display: inline-block;
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		background-image: url('http://localhost:8001/img/icon.png');
+	}
+	.icon-color{
+		background-position: -25px 0;
+	}
+	.icon-combo{
+		background-position: -50px 0;
+		float: right !important;
+	}
+</style>
