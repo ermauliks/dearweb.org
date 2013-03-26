@@ -1,29 +1,20 @@
-<div class="panel">
-    <div class="front">
-      <div class="inside">
-        <section class="result">
-          <style scoped id="result_css">
-          	<%= sData.class_css +'\n\n'+ sData.class_hover +'\n\n'+ sData.class_active +'\n\n'+ sData.class_disabled %>
-          </style>
-          <div id="result_html">
-          	<button id="<%= htmlEncode(sData._id) %>" class="<%= htmlEncode(sData.class) %>" data-original-title="Style"><%= sData.class %></button>
-          </div>
-        </section>
-        <a class="cpen-button" href="">Edit Code</a>
-      </div>
-    </div>
-    <div class="back">
-      <div class="inside">
+<div class='preview' id="result_html">
+           <button id="<%= htmlEncode(sData._id) %>" class="<%= htmlEncode(sData.class) %>" data-original-title="Style"><%= sData.class %></button>
+ </div>
+
+<style scoped id="result_css">
+            <%= sData.class_css +'\n\n'+ sData.class_hover +'\n\n'+ sData.class_active +'\n\n'+ sData.class_disabled %>
+  </style>  
+ <div class="inside">
         <button onclick='CopyToClipboard("abc")'>Copy CSS</button>
         <button>Copy HTMl</button>
         <div id="html" class="column">
           <pre contenteditable class="source language-markup"><code></code></pre></div>
         <div id="css" class="column">
           <pre contenteditable class="source language-css"><code></code></pre></div>
-        <a class="cpen-button" href="">See Result</a>
-      </div>
-    </div>
 </div>
+
+
 
 <script src='http://dl.dropbox.com/u/15746367/scripts/jquery.scoped.js'></script>
 <script>

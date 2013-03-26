@@ -4489,6 +4489,7 @@ input[type="submit"].btn.btn-mini {
   left: 0;
   display: block;
   float: left;
+  width: 100%
   /*margin: 0 10px 0 0;*/
 }
 
@@ -5065,11 +5066,14 @@ input[type="submit"].btn.btn-mini {
 
 .modal {
   position: fixed;
-  top: 10%;
-  left: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
   z-index: 1050;
   width: 560px;
-  margin-left: -280px;
+  height: 700px;
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -5080,7 +5084,7 @@ input[type="submit"].btn.btn-mini {
   outline: none;
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
      -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 7px rgba(07 0, 0, 0.3);
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding-box;
           background-clip: padding-box;

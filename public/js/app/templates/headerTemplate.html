@@ -1,6 +1,6 @@
 <div class='top_header'>
   <h4>frontend.in</h4>
-  <input placeholder='search' style='float:right;'/>
+  <input placeholder='search anything' style='float:right;'/>
 </div>
 
 <ul class="nav">
@@ -17,15 +17,36 @@
 $(function(){
   adjustNavWidth();
   function adjustNavWidth(){
-      var widthToAssign = $(window).width()/$('.nav li').length;
+      var widthToAssign = 100/$('.nav li').length;
       $('.nav li').each(function(){
-        $(this).width(widthToAssign);
+        $(this).attr('style','width:'+ widthToAssign + '%');
       });
-  }
+  } 
 
-  $(window).resize(function(){
-    adjustNavWidth();
-  });
+
+    var children = [];
+    function initialization(){
+        $(".nav").children().each(function() {
+            children.push(this);
+        });
+    }
+    // function fadeThemOut(children) {
+    //     if (children.length > 0) { 
+    //       var currentChild = children.shift(); 
+    //       $(currentChild).find('a').animate({height: "hide", width: "hide"}, 500, "easeInOutBack", function() { fadeThemOut(children);}); 
+    //       }
+    //       else    initialization();
+            
+    // }
+    function fadeThemIn(children) { 
+        if (children.length > 0) { 
+            var currentChild = children.shift(); 
+        $(currentChild).find('a').animate({height: "show"}, 'fast', "easeInOutBack", function() { fadeThemIn(children); });     
+     }   
+        $(currentChild).find('a').animate({height: "hide"}, 'fast', "easeInOutBack", function() { fadeThemIn(children); });     
+    }
+    initialization();
+    fadeThemIn(children);
 
 });
 
