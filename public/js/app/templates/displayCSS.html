@@ -17,10 +17,12 @@
 
 
 <script src='http://dl.dropbox.com/u/15746367/scripts/jquery.scoped.js'></script>
+
+
 <script>
 (function() {
-
 $(document).ready(function(){
+
   $('.cpen-button').click(function(e){
     $(".panel").toggleClass('flip');
     e.preventDefault();
@@ -38,13 +40,16 @@ $(document).ready(function(){
     result_html.html(html_code.text());
     result_css.html(css_code.text());
   }
-  updateSource();
 
   $(".source").blur(function(){
-    updateHTML();
     Prism.highlightAll();
     scopedPolyFill();
   });
+  updateSource();
+  window.setInterval(function(){updateStuff()},100); 
+ function updateStuff(){
+    updateHTML();
+  }
 });
 /**
  * Prism: Lightweight, robust, elegant syntax highlighting
