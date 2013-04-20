@@ -1,16 +1,9 @@
 {
-  "name": "node-example",
+  "name": "dearweb",
   "version": "0.0.1",
   "dependencies": {
-    "express": "3.1.x"
-  },
-   "author": {
-    "name": "Maulik Suchak",
-    "email": "suchak.maulik179@gmail.com",
-    "url": "http://www.maulik.co"
-  },
-  "engines": {
-    "node": "0.10.x",
-    "npm": "1.2.x"
+    "express": "2.5.0",
+    "mongodb" : "1.2.14",
+    "mongo" : "0.1.0"
   }
 }
