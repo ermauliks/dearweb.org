@@ -7,7 +7,7 @@ define(["jquery", "backbone"],
         var ElementTypeModel = Backbone.Model.extend({
 
             
-            url: 'http://localhost:8001/getElementList',
+            url: '/getElementList',
 
             // Model Constructor
             initialize: function(options) {

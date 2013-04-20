@@ -16,8 +16,8 @@ var fs = require('fs'),
     path = require('path'),
     execution_status = 0;
 
-var dbserver = new DBServer('localhost', 27017, {auto_reconnect: true});
-db = new Db('test', dbserver, {safe: true});
+var dbserver = new DBServer('ds043497.mongolab.com',43497, {auto_reconnect: true});
+db = new Db('heroku_app15112354', dbserver, {safe: true});
 
 db.open(function(err, db) {
     if(!err) {
