@@ -1,8 +1,8 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery", "backbone", "models/Model", "views/HeaderView", "views/FooterView","views/IndexView", "views/ButtonView" ,"views/admin/AdminListView", "views/NewEditStyleView", "views/ButtonListView","collections/Collection"],
+define(["jquery", "backbone", "models/Model", "models/ElementTypeModel", "views/HeaderView", "views/FooterView","views/IndexView","views/ElementTypeView", "views/ButtonView" , "views/admin/AdminListView", "views/NewEditStyleView", "views/ButtonListView","views/ElementTypeListView","collections/Collection"],
         
-    function($, Backbone, Model, HeaderView, FooterView, IndexView, ButtonView, AdminListView, NewEditView, ButtonListView, Collection) {
+    function($, Backbone, Model, ElementTypeModel, HeaderView, FooterView, IndexView, ElementTypeView, ButtonView, AdminListView, NewEditStyleView, ButtonListView,ElementTypeListView, Collection) {
         var DesktopRouter = Backbone.Router.extend({
             initialize: function() {
                 // Tells Backbone to start watching for hashchange events
@@ -21,6 +21,15 @@ define(["jquery", "backbone", "models/Model", "views/HeaderView", "views/FooterV
             },
             index: function() {
                 new IndexView();
+
+                var elementTypes = new ElementTypeModel();
+                //Get the documents/records
+                elementTypes.fetch({
+                    success:function (data) {  
+                        //Instantiate ElementTypeListView generate buttons dynamically 
+                        new ElementTypeListView(data.toJSON());
+                    }
+                })     
             },
             elements: function() {
                 //Instantiate the model

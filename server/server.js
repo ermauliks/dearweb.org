@@ -1,4 +1,5 @@
 // DEPENDENCIES
+// mongodb://heroku_app15112354:dlai03jt38fs9k3aqb8lh8s98k@ds043497.mongolab.com:43497/heroku_app15112354
 // ============
 var express = require("express"),
     http = require("http"),
@@ -74,8 +75,16 @@ server.configure(function() {
 var listStyles = function (req, res) {
  //Create the CSS file - button.css which will be at front-end
  createCssFile();
-
   db.collection('stylesDB', function(err, collection) {
+        collection.find().toArray(function(err, items) {            
+            res.send(items);
+        });
+    });
+}
+
+var listsElements = function (req, res) {
+ //lists all the different types of elements from collection
+  db.collection('element_type', function(err, collection) {
         collection.find().toArray(function(err, items) {            
             res.send(items);
         });
@@ -148,6 +157,7 @@ var updateStyle = function (req, res) {
     });
 };
 
+
 var createCssFile = function () {
     //Set the path of the CSS file
     var _filePath = path.resolve('./public/css/button.css');
@@ -170,30 +180,8 @@ var createCssFile = function () {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 server.get('/styles', listStyles);
+server.get('/getElementList', listsElements);
 server.get('/styles/:id', styleDetails);
 server.del('/styles/:id', deleteStyle);
 server.post('/styles', createStyle);

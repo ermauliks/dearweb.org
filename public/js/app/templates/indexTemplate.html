@@ -5,15 +5,7 @@
 			<i class='icon-element icon'/>
 			<h3>select element for you</h3>
 			<i class='icon-combo icon'/>
-
-			<div class='elementbox'>
-					<span>sample-element</span>
-					<span>sample-element</span>
-					<span>sample-element</span>
-					<span>sample-element</span>				
-				</ul>
-			</div>
-
+			<div class='elementbox'></div>
 		</div>
 
 		<div class='combobox'>
@@ -45,7 +37,6 @@
 </div>
 
 
-
 <script type="text/javascript">
 	$(function(){
 		$('.colorbox span').each(function(){
@@ -54,7 +45,7 @@
 		})
 		$('div.combobox').each(function(){
 			$(this).find('div').hide();
-			$(this).find('span').on('click',function(){
+			$(this).find('span').live('click',function(){
 				$(this).parent().parent().find('h3').text($(this).text());
 				$(this).parent().hide();
 			});

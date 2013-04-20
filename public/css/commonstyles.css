@@ -98,14 +98,15 @@ table {
   display:inline;
 }
 
-.nav li{
+.nav span{
 	float: left;
+  padding: 3px 0;
 	cursor: pointer;
 }
-.nav li a{
+.nav span a{
 	display: none;
 }
-.nav li:hover a{
+.nav span:hover a{
 	text-align: center;
 	color: white;
 	display: block;
@@ -121,17 +122,13 @@ table {
 	margin-top: 5px;
 }
 
-
-.nav li{
-  padding: 3px 0;
-}
-.nav-button{background:#a0db6c;  }
-.nav-combobox{background:#6cdbb8; }
+.nav span {background:#a0db6c;  }
+/*.nav-combobox{background:#6cdbb8; }
 .nav-breadcrumb{background:#6d6cdb; }
 .nav-radiobutton{background:#dbbc6c;}
 .nav-combobox{background:#21bcc8;}
 .nav-textbox{background:#9a21c8; }
-.nav-popovers{background:#bcc821;}
+.nav-popovers{background:#bcc821;}*/
 
 /* Overrinding bootstrap css */
 

@@ -1,57 +1,9 @@
 <div class='top_header'>
-  <h4>frontend.in</h4>
+  <h4>dearweb.org</h4>
   <input placeholder='search anything' style='float:right;'/>
 </div>
 
-<ul class="nav">
-  <li class="nav-button active"><a href="#">Buttons</a></li>
-  <li class='nav-combobox'><a href="#">Combo Boxes</a></li>
-  <li class='nav-breadcrumb'><a href="#">Breadcrumbs</a></li>
-  <li class='nav-radiobutton'><a href="#">Radiobuttons</a></li>
-  <li class='nav-combobox'><a href="#">Comboboxes</a></li>
-  <li class='nav-textbox'><a href="#">Textboxes</a></li>
-  <li class='nav-popovers'><a href="#">Popovers</a></li>
-</ul>
-
-<script type="text/javascript">
-$(function(){
-  adjustNavWidth();
-  function adjustNavWidth(){
-      var widthToAssign = 100/$('.nav li').length;
-      $('.nav li').each(function(){
-        $(this).attr('style','width:'+ widthToAssign + '%');
-      });
-  } 
-
-
-    var children = [];
-    function initialization(){
-        $(".nav").children().each(function() {
-            children.push(this);
-        });
-    }
-    // function fadeThemOut(children) {
-    //     if (children.length > 0) { 
-    //       var currentChild = children.shift(); 
-    //       $(currentChild).find('a').animate({height: "hide", width: "hide"}, 500, "easeInOutBack", function() { fadeThemOut(children);}); 
-    //       }
-    //       else    initialization();
-            
-    // }
-    function fadeThemIn(children) { 
-        if (children.length > 0) { 
-            var currentChild = children.shift(); 
-        $(currentChild).find('a').animate({height: "show"}, 'fast', "easeInOutBack", function() { fadeThemIn(children); });     
-     }   
-        $(currentChild).find('a').animate({height: "hide"}, 'fast', "easeInOutBack", function() { fadeThemIn(children); });     
-    }
-    initialization();
-    fadeThemIn(children);
-
-});
-
-</script>
-
+<div class="nav"></div>
 
 
 
