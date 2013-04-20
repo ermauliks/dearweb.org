@@ -1,6 +1,10 @@
 {
   "name": "dearweb",
   "version": "0.0.1",
+  "engines":{
+    "node": "0.8.21",
+    "npm": "1.2.11"
+  },
   "dependencies": {
     "express": "2.5.0",
     "mongodb" : "1.2.14",
