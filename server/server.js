@@ -1,10 +1,9 @@
 // DEPENDENCIES
-// mongodb://heroku_app15112354:dlai03jt38fs9k3aqb8lh8s98k@ds043497.mongolab.com:43497/heroku_app15112354
-// ============
 var express = require("express"),
     http = require("http"),
     port = (process.env.PORT || 8001),
-    server = module.exports = express();
+    server = module.exports = express(),
+    config = require('./config.js');
 
 var mongo = require('mongodb');
 
@@ -22,7 +21,7 @@ db = new Db('heroku_app15112354', dbserver, {safe: true});
 
 db.open(function(err, client) {
   if(err) { return console.dir(err); }
-  client.authenticate('dearweb', 'ilovemomdad', function(authErr, success) {
+  client.authenticate(config.username(), config.password(), function(authErr, success) {
     db.collection('stylesDB', {safe:true}, function(err, collection) {
             if (err) {
                 console.log("The 'stylesDB' collection doesn't exist. Creating it with sample data...");
@@ -193,4 +192,4 @@ server.put('/styles/:id', updateStyle);
 // Start Node.js Server
 http.createServer(server).listen(port);
 
-console.log('Welcome to Backbone-Require-Boilerplate!\n\nPlease go to http://localhost:' + port + ' to start using Require.js and Backbone.js');
+console.log('Welcome to DearWeb.org home!\n\nPlease go to http://localhost:' + port + ' to start using Require.js and Backbone.js');
