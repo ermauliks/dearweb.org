@@ -19,17 +19,20 @@ var fs = require('fs'),
 var dbserver = new DBServer('ds043497.mongolab.com',43497, {auto_reconnect: true});
 db = new Db('heroku_app15112354', dbserver, {safe: true});
 
-db.open(function(err, db) {
-    if(!err) {
-        console.log("Connected to 'test' database");
-        db.collection('stylesDB', {safe:true}, function(err, collection) {
+
+db.open(function(err, client) {
+  if(err) { return console.dir(err); }
+  client.authenticate('dearweb', 'ilovemomdad', function(authErr, success) {
+    db.collection('stylesDB', {safe:true}, function(err, collection) {
             if (err) {
                 console.log("The 'stylesDB' collection doesn't exist. Creating it with sample data...");
                 //populateDB();
             }
         });
-    }
+  });
 });
+
+
 
 //set up middleware
 var allowCrossDomain = function(req, res, next) {
