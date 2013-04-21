@@ -6,7 +6,7 @@
     "npm": "1.2.10"
   },
   "dependencies": {
-    "express": "2.5.0",
+    "express": "3.0.0",
     "mongodb" : "1.2.14",
     "mongo" : "0.1.0"
   }
