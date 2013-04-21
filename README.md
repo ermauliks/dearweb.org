@@ -7,6 +7,15 @@ The application allows you to browse through a list of Website snippets like But
 This application spike/ sample demo is [here](http://dearweb.herokuapp.com/#/elements).
 
 
+## To setup Source code:##
+
+1. Install npm - this command will install all dependencies
+		
+		$ sudo npm install
+
+2. Import all collections from db_collections folder [commands coming soon :-)]
+
+
 ## To run the application on your own Heroku account:##
 
 1. Install the [Heroku Toolbelt](http://toolbelt.heroku.com)
@@ -22,7 +31,7 @@ This application spike/ sample demo is [here](http://dearweb.herokuapp.com/#/ele
         $ heroku create
 
 5. Add the [MongoLab Heroku Add-on](http://addons.heroku.com/mongolab)
-sss
+
         $ heroku addons:add mongolab
 
 6. Upload the app to Heroku:
