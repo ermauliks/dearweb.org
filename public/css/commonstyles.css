@@ -100,10 +100,12 @@ table {
 
 .nav span{
 	float: left;
+  text-align: center;
   padding: 3px 0;
 	cursor: pointer;
 }
 .nav span a{
+  color: white;
 	display: none;
 }
 .nav span:hover a{

@@ -12,7 +12,6 @@ require.config({
       // Core Libraries
       // --------------
       "jquery": "libs/jquery",
-      "jqueryui": "libs/jqueryui",
       "underscore": "libs/lodash",
       "backbone": "libs/backbone",
 
@@ -40,8 +39,6 @@ require.config({
 
       // Twitter Bootstrap jQuery plugins
       "bootstrap": ["jquery"],
-      // jQueryUI
-      "jqueryui": ["jquery"],
       // Backbone
       "backbone": {
         // Depends on underscore/lodash and jQuery
@@ -55,7 +52,7 @@ require.config({
 });
 
 // Includes Desktop Specific JavaScript files here (or inside of your Desktop router)
-require(["jquery", "backbone", "routers/DesktopRouter", "jqueryui", "bootstrap", "backbone.validateAll", "customs/custom"],
+require(["jquery", "backbone", "routers/DesktopRouter", "bootstrap", "backbone.validateAll", "customs/custom"],
 
   function($, Backbone, DesktopRouter) {
     // Instantiates a new Desktop Router instance
