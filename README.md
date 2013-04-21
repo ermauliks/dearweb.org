@@ -1,6 +1,6 @@
 # DearWeb is a Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB #
 
-"DearWeb.org" is a open source plateform to share Snippets of Websites and its built on recent hot technlogies like Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB.
+"DearWeb.org" is a open source platform to share Snippets of Websites and its built on recent hot technlogies like Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB.
 
 The application allows you to browse through a list of Website snippets like Buttons, Navigation, Radio buttons and etc etc, as well as user can contribute using the Github account.
 
