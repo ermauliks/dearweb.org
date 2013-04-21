@@ -13,7 +13,9 @@ This application spike/ sample demo is [here](http://dearweb.herokuapp.com/#/ele
 		
 		$ sudo npm install
 
-2. Import all collections from db_collections folder [commands coming soon :-)]
+2. Import all collections in your localhost/ remote server from db_collections folder
+
+		$ mongoimport --host <yourhost> -db <database> --username <username> --password <password> --collection <collectionname> --file <filepath/filename>
 
 
 ## To run the application on your own Heroku account:##
