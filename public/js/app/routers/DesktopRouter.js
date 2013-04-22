@@ -1,14 +1,15 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery", "backbone", "models/Model", "models/ElementTypeModel", "views/HeaderView", "views/FooterView","views/IndexView","views/ElementTypeView", "views/ButtonView" , "views/admin/AdminListView", "views/NewEditStyleView", "views/ButtonListView","views/ElementTypeListView","collections/Collection"],
+define(["jquery", "backbone", "models/Model", "views/NewEditStyleView" , "models/ElementTypeModel", "views/HeaderView", "views/FooterView","views/IndexView","views/ElementTypeView", "views/ButtonView" , "views/admin/AdminListView", "views/NewEditStyleView", "views/ButtonListView","views/ElementTypeListView","collections/Collection"],
         
-    function($, Backbone, Model, ElementTypeModel, HeaderView, FooterView, IndexView, ElementTypeView, ButtonView, AdminListView, NewEditStyleView, ButtonListView,ElementTypeListView, Collection) {
+    function($, Backbone, Model,NewEditView, ElementTypeModel, HeaderView, FooterView, IndexView, ElementTypeView, ButtonView, AdminListView, NewEditStyleView, ButtonListView,ElementTypeListView, Collection) {
         var DesktopRouter = Backbone.Router.extend({
             initialize: function() {
                 // Tells Backbone to start watching for hashchange events
                 Backbone.history.start();
                 new HeaderView();
                 new FooterView();
+                this.tracking();
             },
             // All of your Backbone Routes (add more)
             routes: {                
@@ -47,7 +48,17 @@ define(["jquery", "backbone", "models/Model", "models/ElementTypeModel", "views/
             },
             edit: function(id) {
                 new NewEditView({"id":id});
-            }    
+            },
+            tracking: function() {
+                  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                  ga('create', 'UA-40337186-1', 'frontend.in');
+                  ga('send', 'pageview');
+
+            } 
         });
 
         // Returns the DesktopRouter class

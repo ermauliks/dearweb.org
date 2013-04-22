@@ -25,7 +25,6 @@ footer, header, hgroup, menu, nav, section {
 }
 
 html, body{
-	height: 100%;
   font-family: kefa !important;
 	background-color: #eee;
 }
@@ -85,6 +84,17 @@ table {
   background: none repeat scroll 0 0 #666666;
   float: right;
   padding: 5px;
+}
+
+.app-header{
+  float: left;
+  height: 30px;
+  width: 185px;
+  opacity: 0.5;
+  background: url('../img/dearweb-logo-small.png');
+}
+.app-header:hover{
+  opacity: 0.8;
 }
 .top_header input:focus{
   background-color: white;
@@ -516,7 +526,7 @@ button:hover {
     display: inline-block;
     background-repeat: no-repeat;
     background-position: 0 0;
-    background-image: url('http://localhost:8001/img/icon.png');
+    background-image: url('../img/icon.png');
   }
   .icon-color{
     background-position: -25px 0;
