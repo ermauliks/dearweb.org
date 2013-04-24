@@ -1,8 +1,8 @@
 // View.js
 // -------
-define(["jquery", "backbone", "models/Styles", "text!templates/adminListStyle.html"],
+define(["jquery", "backbone", "models/Styles", "models/Model", "text!templates/adminListStyle.html"],
 
-    function($, Backbone, Model, template){
+    function($, Backbone, Styles, Model, template){
 
         var AdminListView = Backbone.View.extend({
 
@@ -19,13 +19,13 @@ define(["jquery", "backbone", "models/Styles", "text!templates/adminListStyle.ht
 
             // View Event Handlers
             events: {
-
+                'click .delete': 'deleteStyle'
             },
 
             // Renders the view's template to the UI
             render: function() {
                 var that = this;
-                var styles = new Model();
+                var styles = new Styles();
                 styles.fetch({
                     success:function (data) {
                        // Setting the view's template property using the Underscore template method
@@ -38,10 +38,21 @@ define(["jquery", "backbone", "models/Styles", "text!templates/adminListStyle.ht
                 // Maintains chainability
                 return this;
 
+            },
+            deleteStyle: function (ev) { 
+                var id = $(ev.currentTarget).attr('data-style-id');
+                var that = this;  
+                that.style = new Model({"id": id});                 
+                that.style.destroy({
+                  success: function () {
+                        location.reload(true);
+                  }
+                });  
+                ev.stopPropagation();
+                return false;  
             }
 
         });
-
         // Returns the View class
         return AdminListView;
 

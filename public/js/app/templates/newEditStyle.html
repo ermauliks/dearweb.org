@@ -24,7 +24,7 @@
                     <label>Class Hover</label>
                     <textarea name="class_hover" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_hover) : '' %></textarea>
                </td>
-                <td>                
+                <!-- <td>                 -->
                     <label>Class Active</label>
                     <textarea name="class_active" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_active) : '' %></textarea>
                </td>
@@ -44,8 +44,8 @@
     </fieldset>
     
     <button type="submit" class="btn btn-success"><%= sData ? 'Update' : 'Create' %></button>
-    <% if(sData) { %>
+<!--     <% if(sData) { %>
         <input type="hidden" name="id" value=<%= htmlEncode(sData._id) %> />
         <button type="button" data-style-id=<%= htmlEncode(sData._id) %> class="btn btn-danger delete">Delete</button>
-   <% }; %>
+   <% }; %> -->
 </form>

@@ -14,6 +14,11 @@
         <td><%= htmlEncode(data.input_type) %></td>
         <td><%= htmlEncode(data.class) %></td>
         <td><a class="btn" href="#/admin/edit/<%= data._id %>">Edit</a></td>
+        <td>
+                <input type="hidden" name="id" value=<%= htmlEncode(data._id) %> />
+                <button type="button delete" data-style-id=<%= htmlEncode(data._id)%> class="btn btn-danger delete">Delete</button>
+        </td>
+                
       </tr>
     <% }); %>
   </tbody>

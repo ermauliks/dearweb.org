@@ -20,8 +20,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/newEditStyle.html"
             // View Event Handlers
             el: '.page',
             events: {
-                'submit .edit-styles-form': 'saveStyles',
-                'click .delete': 'deleteUser'
+                'submit .edit-styles-form': 'saveStyles'
             },
             saveStyles: function(ev) {
                 var styleDetails = $(ev.currentTarget).serializeObject(),
@@ -40,20 +39,6 @@ define(["jquery", "backbone", "models/Model", "text!templates/newEditStyle.html"
                     }
                 });
                 return false;
-            },
-            deleteUser: function (ev) { 
-                var id = $(ev.currentTarget).attr('data-style-id');
-                var that = this;  
-                that.style = new Model({"id": id});                 
-                that.style.destroy({
-                  success: function () {
-                    console.log('destroyed');
-                    //Backbone.Router.navigate('', {trigger:true});
-                  }
-                })  
-
-                ev.stopPropagation();
-                return false;  
             },
             // Renders the view's template to the UI
             render: function (options) {   
