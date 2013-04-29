@@ -149,7 +149,9 @@ table {
 }
 
 .modal {
-  width: 900px !important;
+  top: 80px;
+  bottom: 80px;
+  width: 1200px !important;
   box-shadow: none !important;
   border: none !important;
   border-radius: none !important;

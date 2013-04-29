@@ -1,36 +1,40 @@
 <!-- Define the form to create a list -->
 <form class="edit-styles-form">
-    
     <h3><%= sData ? 'Edit' : 'New' %> Style</h3>
-    
     <fieldset>
-        <label>Input Type</label>
-        <input name="input_type" type="text" value=<%= sData ? htmlEncode(sData.input_type) : '' %>>
+        <label>Element Type</label>
+        <select id='elementList'>
+          <option value="1">Buttons</option>
+          <option value="2">Dropdowns</option>
+          <option value="3">Radio-buttons</option>
+        </select> 
+
+        <input type='text' name="class" value='<%= sData ? htmlEncode(sData.class) : '' %>' placeholder='Class Name'/>
+        <!-- <input name="input_type" type="text" value=<%= sData ? htmlEncode(sData.input_type) : '' %>> -->
     </fieldset>
 
     <fieldset>
-        <label>Class Name</label>
-        <textarea name="class" rows="2" cols="10"><%= sData ? htmlEncode(sData.class) : '' %></textarea>
+        <textarea name="element_html" style='width:99%; height:100px;'  placeholder='place your html here'><%= sData ? htmlEncode(sData.element_html) : '' %></textarea>
     </fieldset>
 
     <fieldset>
-        <table style=''>
+        <table style='width:100%'>
             <tr>
-                <td >
+                <td>
                      <label>Class CSS</label>
-                    <textarea name="class_css" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_css) : '' %></textarea>
+                    <textarea style='width:96%' name="class_css" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_css) : '' %></textarea>
                 </td>
                 <td>
                     <label>Class Hover</label>
-                    <textarea name="class_hover" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_hover) : '' %></textarea>
+                    <textarea style='width:96%' name="class_hover" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_hover) : '' %></textarea>
                </td>
-                <!-- <td>                 -->
+                <td>                
                     <label>Class Active</label>
-                    <textarea name="class_active" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_active) : '' %></textarea>
+                    <textarea style='width:96%' name="class_active" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_active) : '' %></textarea>
                </td>
                 <td>                
                     <label>Class Disabled</label>
-                    <textarea name="class_disabled" rows="5" cols="10"><%= sData ? htmlEncode(sData.class_disabled) : '' %></textarea>
+                    <textarea style='width:96%' name="class_disabled" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_disabled) : '' %></textarea>
                 
                 </td>
             </tr>
@@ -39,8 +43,8 @@
     </fieldset>
 
     <fieldset>
-        <label>Input HTML</label>
-        <textarea name="element_html" rows="5" cols="10"><%= sData ? htmlEncode(sData.element_html) : '' %></textarea>
+<!--         <label>Input HTML</label>
+        <textarea name="element_html" rows="5" cols="10"><%= sData ? htmlEncode(sData.element_html) : '' %></textarea> -->
     </fieldset>
     
     <button type="submit" class="btn btn-success"><%= sData ? 'Update' : 'Create' %></button>

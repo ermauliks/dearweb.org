@@ -1,8 +1,8 @@
 // View.js
 // -------
-define(["jquery", "backbone", "models/Styles", "models/Model", "text!templates/adminListStyle.html"],
+define(["jquery", "backbone", "models/Styles", "models/Model", "text!templates/adminListStyle.html", "views/DisplayCssView",'views/NewEditStyleView'],
 
-    function($, Backbone, Styles, Model, template){
+    function($, Backbone, Styles, Model, template, DisplayCssView, NewEditStyleView){
 
         var AdminListView = Backbone.View.extend({
 
@@ -19,7 +19,14 @@ define(["jquery", "backbone", "models/Styles", "models/Model", "text!templates/a
 
             // View Event Handlers
             events: {
-                'click .delete': 'deleteStyle'
+             'click .delete': 'deleteStyle',
+              "click .edit,.new" : "showEditDialog"
+            },
+             //Show the modal popup for styles code
+            showEditDialog: function(ev) {
+                var _id = $(ev.currentTarget).attr('id');
+                var popup = new NewEditStyleView({"id": _id});
+                popup.render().showModal();
             },
 
             // Renders the view's template to the UI

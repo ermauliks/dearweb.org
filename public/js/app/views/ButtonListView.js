@@ -1,8 +1,8 @@
 // ButtonListView.js - index.html listing for users
 // -------
-define(["jquery", "backbone", "models/ButtonsCollection", "views/ButtonView", "views/DisplayCssView"],
+define(["jquery", "backbone", "models/ButtonsCollection", "views/ButtonView", "views/DropDownView", "views/DisplayCssView"],
 
-    function($, Backbone, ButtonsCollection, ButtonView, DisplayCssView){
+    function($, Backbone, ButtonsCollection, ButtonView, DropDownView, DisplayCssView){
 
         var ButtonListView = Backbone.View.extend({
            // The DOM Element classes associated with this view
@@ -30,7 +30,13 @@ define(["jquery", "backbone", "models/ButtonsCollection", "views/ButtonView", "v
             // Renders the view's template to the UI
             render: function() {
                 _.each( this.data, function( item ) {
-                    this.renderButton( item );
+                    if(item.element_type == '1'){
+                        this.renderButton( item );
+                     }
+                    else if(item.element_type == '2'){
+                        this.renderDropDown( item );
+                    }
+                    
                 }, this );
             },
 
@@ -40,6 +46,14 @@ define(["jquery", "backbone", "models/ButtonsCollection", "views/ButtonView", "v
                 });
 
                 this.$el.append(buttonView.render());
+            },
+
+            renderDropDown: function( item ) {
+                var dropDownView = new DropDownView({
+                    model: item
+                });
+
+                this.$el.append(dropDownView.render());
             }
         });
         // Returns the View class

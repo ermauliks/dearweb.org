@@ -13,6 +13,7 @@ require.config({
       // --------------
       "jquery": "libs/jquery",
       "underscore": "libs/lodash",
+      "angular": "libs/angular.min",
       "backbone": "libs/backbone",
 
       // Plugins

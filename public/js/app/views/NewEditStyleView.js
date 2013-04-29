@@ -1,13 +1,10 @@
 // View.js
 // -------
-define(["jquery", "backbone", "models/Model", "text!templates/newEditStyle.html"],
+define(["jquery","angular", "backbone", "models/Model","views/ModalView",  "text!templates/newEditStyle.html"],
 
-    function($, Backbone, Model, template){
+    function($, angular,Backbone, Model,ModalView, template){
 
-        var newEditView = Backbone.View.extend({
-
-            // The DOM Element associated with this view
-            el: ".page",
+        var newEditView = ModalView.extend({
 
             // View constructor
             initialize: function(options) {
@@ -18,33 +15,19 @@ define(["jquery", "backbone", "models/Model", "text!templates/newEditStyle.html"
             },
 
             // View Event Handlers
-            el: '.page',
-            events: {
-                'submit .edit-styles-form': 'saveStyles'
-            },
-            saveStyles: function(ev) {
-                var styleDetails = $(ev.currentTarget).serializeObject(),
-                    _id = null;
+            // el: '.page',
 
-                if(styleDetails.id != undefined){
-                     _id = styleDetails.id;
-                }
-                
-                //Model object                
-                var style = new Model({"id": _id});
-                style.save(styleDetails, {
-                    success: function (data) {                        
-                        console.log('DATA ADDED SUCCESSFULLY: ' + data);
-                       // Backbone.Router.navigate('', {trigger:true})
-                    }
-                });
-                return false;
+            events: {
+              'submit .edit-styles-form': 'saveStyles'
             },
+
+
             // Renders the view's template to the UI
             render: function (options) {   
                 var that = this;
-                if(options.id) {
-                    that.style = new Model({"id": options.id});
+                // console.log(that.id);
+                if(that.id) {
+                    that.style = new Model({"id": that.id});
                     that.style.fetch({
                         success: function(style) {
                             that.template = _.template(template, {sData:style.toJSON()});
@@ -58,7 +41,25 @@ define(["jquery", "backbone", "models/Model", "text!templates/newEditStyle.html"
                 }
 
                 return this;
-            }            
+            },
+
+            saveStyles: function(ev) {
+                var styleDetails = $(ev.currentTarget).serializeObject(),
+                    _id = null;
+
+                if(styleDetails.id != undefined){
+                     _id = styleDetails.id;
+                }
+                
+                //Model object                
+                var style = new Model({"id": _id});
+                style.save(styleDetails, {
+                    success: function (data) {                        
+                        
+                    }
+                });
+                return false;
+            }
         });
 
         // Returns the View class
