@@ -15,22 +15,36 @@ var fs = require('fs'),
     path = require('path'),
     execution_status = 0;
 
-var dbserver = new DBServer('ds043497.mongolab.com',43497, {auto_reconnect: true});
-db = new Db('heroku_app15112354', dbserver, {safe: true});
 
 
-db.open(function(err, client) {
-  if(err) { return console.dir(err); }
-  client.authenticate(config.username(), config.password(), function(authErr, success) {
-    db.collection('stylesDB', {safe:true}, function(err, collection) {
-            if (err) {
-                console.log("The 'stylesDB' collection doesn't exist. Creating it with sample data...");
-                //populateDB();
-            }
-        });
+
+// if(config.environment() == 'dev'){
+//     var dbserver = new DBServer('ds043497.mongolab.com',43497, {auto_reconnect: true});
+//     db = new Db('heroku_app15112354', dbserver, {safe: true});
+//     db.open(function(err, client) {
+//       if(err) { return console.dir(err); }
+//       client.authenticate(config.username(), config.password(), function(authErr, success) {
+//         db.collection('stylesDB', {safe:true}, function(err, collection) {
+//                 if (err) {
+//                     console.log("The 'stylesDB' collection doesn't exist. Creating it with sample data...");
+//                 }
+//             });
+//       });
+//     });
+// }
+// else{
+    var dbserver = new DBServer('localhost', 27017, {auto_reconnect: true}); 
+    db = new Db('test', dbserver, {safe: true});
+    db.open(function(err, db) {
+      if(!err) {
+          db.collection('stylesDB', {safe:true}, function(err, collection) {
+              if (err) {
+                  console.log("The 'stylesDB' collection doesn't exist. Creating it with sample data...");
+              }
+          });
+      }
   });
-});
-
+// }
 
 
 //set up middleware
@@ -175,6 +189,7 @@ var createCssFile = function () {
                 //Holds CSS data from Document
                 cssString = doc.class_css + doc.class_hover + doc.class_active + doc.class_disabled; 
             } 
+
             //Append data to the file synchronously
             fs.appendFileSync(_filePath, cssString);
         });  

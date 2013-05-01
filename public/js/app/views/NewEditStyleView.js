@@ -25,18 +25,19 @@ define(["jquery","angular", "backbone", "models/Model","views/ModalView",  "text
             // Renders the view's template to the UI
             render: function (options) {   
                 var that = this;
-                // console.log(that.id);
+                console.log(that.id);
                 if(that.id) {
-                    that.style = new Model({"id": that.id});
+                    that.style = new Model({"id": that.id});                    
                     that.style.fetch({
                         success: function(style) {
                             that.template = _.template(template, {sData:style.toJSON()});
                             that.$el.html(that.template);
                         }
-                    })                          
+                    }); 
+                                             
                 }
                 else {
-                    that.template = _.template(template, {sData:null});
+                    that.template = _.template(template, {sData:''});
                     that.$el.html(that.template);
                 }
 

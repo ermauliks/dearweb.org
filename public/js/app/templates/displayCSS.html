@@ -1,12 +1,12 @@
 <div class='preview' id="result_html">
-           <button id="<%= htmlEncode(sData._id) %>" class="<%= htmlEncode(sData.class) %>" data-original-title="Style"><%= sData.class %></button>
+           <%= sData.element_html %>
  </div>
 
 <style scoped id="result_css">
             <%= sData.class_css +'\n\n'+ sData.class_hover +'\n\n'+ sData.class_active +'\n\n'+ sData.class_disabled %>
   </style>  
  <div class="inside">
-        <button onclick='CopyToClipboard("abc")'>Copy CSS</button>
+        <button>Copy CSS</button>
         <button>Copy HTMl</button>
         <div id="html" class="column">
           <pre contenteditable class="source language-markup"><code></code></pre></div>
@@ -20,9 +20,18 @@
 
 
 <script>
-(function() {
-$(document).ready(function(){
 
+(function() {
+if(!String.prototype.trim) {  
+  String.prototype.trim = function () {  
+    return this.replace(/^\s+|\s+$/g,'');  
+  };  
+}
+
+$(document).ready(function(){
+  var temp = $('#result_css').text();
+  $('#result_css').text(temp.trim());
+  
   $('.cpen-button').click(function(e){
     $(".panel").toggleClass('flip');
     e.preventDefault();

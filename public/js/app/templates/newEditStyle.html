@@ -3,10 +3,10 @@
     <h3><%= sData ? 'Edit' : 'New' %> Style</h3>
     <fieldset>
         <label>Element Type</label>
-        <select id='elementList'>
-          <option value="1">Buttons</option>
-          <option value="2">Dropdowns</option>
-          <option value="3">Radio-buttons</option>
+        <select name='element_type' id='elementList'>
+          <option <%= htmlEncode(sData.element_type) == 1 ? 'selected' : '' %> value="1">Buttons</option>
+          <option <%= htmlEncode(sData.element_type) == 2 ? 'selected' : '' %> value="2">Dropdowns</option>
+          <option <%= htmlEncode(sData.element_type) == 3 ? 'selected' : '' %> value="3">Radio-buttons</option>
         </select> 
 
         <input type='text' name="class" value='<%= sData ? htmlEncode(sData.class) : '' %>' placeholder='Class Name'/>

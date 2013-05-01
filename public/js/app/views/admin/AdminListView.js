@@ -20,12 +20,18 @@ define(["jquery", "backbone", "models/Styles", "models/Model", "text!templates/a
             // View Event Handlers
             events: {
              'click .delete': 'deleteStyle',
-              "click .edit,.new" : "showEditDialog"
+              "click .edit" : "showEditDialog",
+              "click .new" : "addNew"
             },
              //Show the modal popup for styles code
             showEditDialog: function(ev) {
                 var _id = $(ev.currentTarget).attr('id');
-                var popup = new NewEditStyleView({"id": _id});
+                var popup = new NewEditStyleView({"id": _id});                
+                popup.render().showModal();
+            },
+
+            addNew:function(){
+                var popup = new NewEditStyleView({"id": 0}); 
                 popup.render().showModal();
             },
 

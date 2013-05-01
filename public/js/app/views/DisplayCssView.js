@@ -18,7 +18,7 @@ define(["jquery", "backbone","models/Model", "views/ModalView", "text!templates/
             // Renders the view's template to the UI
             render: function() {
                 var that = this;
-                console.log("DisplayCssView.js "+ that.id);
+                // console.log("DisplayCssView.js "+ that.id);
                 if(that.id) {
                     that.style = new Model({"id": that.id});
                     that.style.fetch({

@@ -22,7 +22,7 @@ define(["jquery", "backbone", "models/ButtonsCollection", "views/ButtonView", "v
 
             //Show the modal popup for styles code
             showPopUp: function(ev) {
-                var _id = $(ev.currentTarget).find('button').attr('id');
+                var _id = $(ev.currentTarget).find('>:first-child').attr('id');
                 var popup = new DisplayCssView({"id": _id});
                 popup.render().showModal();
             },
