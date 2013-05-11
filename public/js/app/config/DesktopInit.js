@@ -53,7 +53,7 @@ require.config({
 });
 
 // Includes Desktop Specific JavaScript files here (or inside of your Desktop router)
-require(["jquery", "backbone", "routers/DesktopRouter", "bootstrap", "backbone.validateAll", "customs/custom"],
+require(["jquery", "backbone", "routers/DesktopRouter"],
 
   function($, Backbone, DesktopRouter) {
     // Instantiates a new Desktop Router instance
