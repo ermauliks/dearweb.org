@@ -7,8 +7,8 @@ The application allows you to browse through a list of Website snippets like But
 This application spike/ sample demo is [here](http://dearweb.herokuapp.com/#/elements).
 
 
-#Presentation
-[![ScreenShot](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://y2u.be/jOrzO0V0o7s)
+#Presentation about DearWeb.org
+[![ScreenShot](https://raw.github.com/ermauliks/dearweb.org/master/public/img/video.png)](http://y2u.be/jOrzO0V0o7s)
 
 ## To setup Source code:##
 
