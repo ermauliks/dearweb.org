@@ -7,6 +7,9 @@ The application allows you to browse through a list of Website snippets like But
 This application spike/ sample demo is [here](http://dearweb.herokuapp.com/#/elements).
 
 
+#Presentation
+[![ScreenShot](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](http://y2u.be/jOrzO0V0o7s)
+
 ## To setup Source code:##
 
 1. Install npm - this command will install all dependencies
