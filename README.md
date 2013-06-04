@@ -1,10 +1,12 @@
-# DearWeb is a Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB #
+# DearWeb: Open Source Design Element Templates #
 
-"DearWeb.org" is a open source platform to share Snippets of Websites and its built on recent hot technlogies like Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB.
+Have you ever spent hours trying to find that right button or navigation elements for your website? Have you reinvented it a few times? A hundred times? Every time?!?! This project was born partly out of the pain I've faced while trying to build and prototype websites quickly.
 
-The application allows you to browse through a list of Website snippets like Buttons, Navigation, Radio buttons and etc etc, as well as user can contribute using the Github account.
+"DearWeb.org" is an open source platform to share snippets of websites, and it is built on top of Backbone.js, Twitter Bootstrap, Node.js, Express, and MongoDB.
 
-This application spike/ sample demo is [here](http://dearweb.herokuapp.com/#/elements).
+The application allows you to browse through and use various style elements(buttons, navigation, radio buttons etc). Feel free to fork and contribute your own style elements to DearWeb.org.
+
+You may find a demo [here](http://dearweb.herokuapp.com/#/elements).
 
 
 #Presentation about DearWeb.org
