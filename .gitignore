@@ -1,4 +1,87 @@
+# Application-specific ignores
 node_modules
 server/config.js
-.DS_store
 public/css/button.css
+# /Application-specific ignores
+
+# NetBeans IDE ignores
+# @see https://github.com/github/gitignore/blob/master/Global/NetBeans.gitignore
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+# /NetBeans IDE ignores
+
+# Eclipse IDE ignores
+# @see https://github.com/github/gitignore/blob/master/Global/Eclipse.gitignore
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+# /Eclipse IDE ignores
+
+# SASS Ignores
+*.sass-cache
+*.pygments-cache
+# /SASS Ignores
+
+# Sublime Text ignores
+*.sublime-project
+*.sublime-workspace
+# /Sublime Text ignores
+
+# Windows ignores
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+# /Windows ignores
+
+# OSX ignores
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+# /OSX ignores
+
+# Other ignores
+.bundle
+.gist-cache
+# /Other ignores
