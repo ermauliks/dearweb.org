@@ -46,16 +46,19 @@ local.properties
 # /Eclipse IDE ignores
 
 # SASS Ignores
+# @see https://github.com/github/gitignore/blob/master/Global/SASS.gitignore
 *.sass-cache
 *.pygments-cache
 # /SASS Ignores
 
 # Sublime Text ignores
+# @see https://github.com/github/gitignore/blob/master/Global/SublimeText.gitignore
 *.sublime-project
 *.sublime-workspace
 # /Sublime Text ignores
 
 # Windows ignores
+# @see https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -68,6 +71,7 @@ $RECYCLE.BIN/
 # /Windows ignores
 
 # OSX ignores
+# @see https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
 .DS_Store
 .AppleDouble
 .LSOverride
