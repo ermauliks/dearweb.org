@@ -2,14 +2,14 @@
 	<img alt='DearWeb.org' src="/img/dearweb-logo.png">
 
 	<div class='search-element-holder'>
-		<div class='combobox'>
+		<div id='element-dropdown' class='combobox'>
 			<i class='icon-element icon'/>
 			<h3 id="element">select element for you</h3>
 			<i class='icon-combo icon'/>
 			<div class='elementbox'></div>
 		</div>
 
-		<div class='combobox'>
+		<div id='color-dropdown' class='combobox'>
 			<i class='icon-color icon'/>
 			<h3 id="color">choose color</h3>
 			<i class='icon-combo icon'/>
@@ -33,6 +33,6 @@
 
 
 		</div>
-		<a id="button-go" rv-href="buttonGo.attributes.searchUrl">Go</a>
+		<a id="button-go" rv-href="elementModelEl.attributes.searchUrl | constructUrl 12 56">Go</a>
 	</div>
 </div>

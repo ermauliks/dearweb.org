@@ -16,6 +16,45 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
                 this.render();
                 this.init();
 
+                
+            },
+
+            // View Event Handlers
+            events: {
+                "click .search" : "doSearch"
+            },
+
+            init: function(){
+                var elementModel = new Backbone.Model({
+                    searchUrl: "/elements",
+                    elementType: "",
+                    elementColor: ""
+                });
+
+                $('.colorbox span').each(function(){
+                    $(this).attr('style','background-color:'+ $(this).text() + ';color:'+ $(this).text());
+
+                })
+                $('div.combobox').each(function(){
+                    $(this).find('div').hide();
+                    $(this).find('span').live('click',function(){
+
+                        if($(this).parents('.combobox').attr('id') === 'element-dropdown') {
+                            elementModel.set("elementType", $(this).text());  
+                            console.log($(this).parents('.combobox').attr('id'));       
+                        } else {
+                            elementModel.set("elementColor", $(this).text()); 
+                            console.log($(this).parents('.combobox').attr('id'));
+                        }
+
+                        $(this).parent().parent().find('h3').text($(this).text());
+                        $(this).parent().hide();
+                    });
+                    $(this).on('mouseover', function(){$(this).find('div').show();})
+                           .on('mouseout', function(){$(this).find('div').hide();})
+                });
+
+
                 rivets.adapters[':'] = {
                     subscribe: function(obj, keypath, callback) {
                         obj.on('change:' + keypath, callback);
@@ -29,37 +68,14 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
                     publish: function(obj, keypath, value) {
                         obj.set(keypath, value);
                     }
-                }
-            },
+                };
 
-            // View Event Handlers
-            events: {
-                "click .search" : "doSearch"
-            },
+                rivets.formatters.constructUrl = function(value, elementType, elementColor) {
+                    return elementType + "/" + elementColor;
+                };
 
-            init: function(){
-                $('.colorbox span').each(function(){
-                    $(this).attr('style','background-color:'+ $(this).text() + ';color:'+ $(this).text());
-
-                })
-                $('div.combobox').each(function(){
-                    $(this).find('div').hide();
-                    $(this).find('span').live('click',function(){
-                        $(this).parent().parent().find('h3').text($(this).text());
-                        $(this).parent().hide();
-                    });
-                    $(this).on('mouseover', function(){$(this).find('div').show();})
-                           .on('mouseout', function(){$(this).find('div').hide();})
-                });
-
-                var buttonGoModel = new Backbone.Model({
-                    searchUrl: "/elements"
-                });
-
-                var buttonGo = $("#button-go");
-
-                rivets.bind(buttonGo, {
-                    buttonGo: buttonGoModel
+                rivets.bind($(".page"), {
+                    elementModelEl: elementModel
                 });
             },
 
