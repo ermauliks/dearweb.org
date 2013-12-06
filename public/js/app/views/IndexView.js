@@ -14,12 +14,30 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
 
                 // Calls the view's render method
                 this.render();
+                this.init();
+
 
             },
 
             // View Event Handlers
             events: {
+                "click .search" : "doSearch"
+            },
 
+            init: function(){
+                $('.colorbox span').each(function(){
+                    $(this).attr('style','background-color:'+ $(this).text() + ';color:'+ $(this).text());
+
+                })
+                $('div.combobox').each(function(){
+                    $(this).find('div').hide();
+                    $(this).find('span').live('click',function(){
+                        $(this).parent().parent().find('h3').text($(this).text());
+                        $(this).parent().hide();
+                    });
+                    $(this).on('mouseover', function(){$(this).find('div').show();})
+                           .on('mouseout', function(){$(this).find('div').hide();})
+                });
             },
 
             // Renders the view's template to the UI
@@ -34,6 +52,10 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
                 // Maintains chainability
                 return this;
 
+            },
+
+            doSearch: function () {
+                
             }
 
         });

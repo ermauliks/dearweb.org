@@ -16,6 +16,8 @@ define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/
                 // When there is no hash on the url, the home method is called
                 "": "index",
                 "elements": "elements",
+                "elements/:elementType": "listSpecificElements",
+                "elements/:elementType/:color": "listSpecificElementsWithColor",
                 "admin": "home",
                 "admin/edit/:id": "edit",
                 "admin/new": "edit"
@@ -42,6 +44,12 @@ define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/
                         new ButtonListView(data.toJSON());
                     }
                 })                
+            },
+            listSpecificElements: function(elementType) {
+                alert('we will search ' + elementType);           
+            },            
+            listSpecificElementsWithColor: function(elementType, color) {
+                alert('we will search ' + elementType + ' with ' + color);           
             },
             home: function() {
                 new AdminListView();

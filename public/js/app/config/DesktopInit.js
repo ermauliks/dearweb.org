@@ -12,6 +12,7 @@ require.config({
       // Core Libraries
       // --------------
       "jquery": "libs/jquery",
+      "stickit": "backbone.stickit.min",
       "underscore": "libs/lodash",
       "angular": "libs/angular.min",
       "backbone": "libs/backbone",

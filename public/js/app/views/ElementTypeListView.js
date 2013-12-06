@@ -55,7 +55,7 @@ define(["jquery", "backbone", "models/ElementTypeCollection", "views/ElementType
                 var widthToAssign = 100/$('.nav span').length;
                 
                 $('.nav span').each(function(){
-                      $(this).attr('style','width:'+ widthToAssign + '%');
+                    $(this).attr('style','width:'+ widthToAssign + '%');
                 });
 
                 function initialization(){
@@ -66,9 +66,9 @@ define(["jquery", "backbone", "models/ElementTypeCollection", "views/ElementType
                 function fadeThemIn(children) { 
                     if (children.length > 0) { 
                         var currentChild = children.shift(); 
-                        $(currentChild).find('a').animate({height: "show"}, 'fast', "easeInOutBack", function() { fadeThemIn(children); });     
+                        $(currentChild).find('a').animate({height: "show"}, 'fast', function() { fadeThemIn(children); });     
                      }   
-                    $(currentChild).find('a').animate({height: "hide"}, 'fast', "easeInOutBack", function() { fadeThemIn(children); });     
+                    $(currentChild).find('a').animate({height: "hide"}, 'fast', function() { fadeThemIn(children); });     
                 }
                 initialization();    
                 fadeThemIn(children);
