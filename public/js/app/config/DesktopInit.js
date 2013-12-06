@@ -16,6 +16,7 @@ require.config({
       "underscore": "libs/lodash",
       "angular": "libs/angular.min",
       "backbone": "libs/backbone",
+      "rivets": "libs/rivets.min",
 
       // Plugins
       // -------
