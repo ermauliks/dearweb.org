@@ -45,8 +45,22 @@ define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/
                     }
                 })                
             },
+
             listSpecificElements: function(elementType) {
-                alert('we will search ' + elementType);           
+            
+                var options = new Object();
+                options.id = elementType;
+
+                var specificElementModel = new Model(options);
+
+                specificElementModel.fetch({
+                    success:function (data) {
+                        //Instantiate ButtonListView generate buttons dynamically
+                        new ButtonListView(data.toJSON());
+                    }
+                })
+
+
             },            
             listSpecificElementsWithColor: function(elementType, color) {
                 alert('we will search ' + elementType + ' with ' + color);           
