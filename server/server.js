@@ -107,6 +107,15 @@ var listsElements = function (req, res) {
    });
 }
 
+var listsColors  = function (req, res) {
+//lists all the different types of elements from collection
+   db.collection('colorsDB', function(err, collection) {
+       collection.find().toArray(function(err, items) {            
+           res.send(items);
+       });
+   });
+}
+
 var searchElements = function(req, res){
    db.collection('stylesDB', function(err, collection) {
        collection.find({ input_type: req.params.id}).toArray(function(err, items) {            
@@ -211,6 +220,7 @@ server.get('/getElementList', listsElements);
 server.del('/styles/:id', deleteStyle);
 server.post('/styles', createStyle);
 server.put('/styles/:id', updateStyle);
+server.get('/getColorsList', listsColors);
 
 // Start Node.js Server
 http.createServer(server).listen(port);
