@@ -1,0 +1,3 @@
+{ "_id" : ObjectId("52b018d67e537882253d66fc"), "id" : "1", "hex_color" : "#000000", "name" : "white" }
+{ "_id" : ObjectId("52b018e77e537882253d66fd"), "id" : "2", "hex_color" : "#100000", "name" : "random1" }
+{ "_id" : ObjectId("52b018f57e537882253d66fe"), "id" : "3", "hex_color" : "#100300", "name" : "random2" }

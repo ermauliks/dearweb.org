@@ -18,9 +18,11 @@ You may find a demo [here](http://dearweb.herokuapp.com/#/elements).
 		
 		$ sudo npm install
 
-2. Import all collections in your localhost/ remote server from db_collections folder
+2. Import all collections in your localhost/ remote server from project folder
 
-		$ mongoimport --host <yourhost> -db <database> --username <username> --password <password> --collection <collectionname> --file <filepath/filename>
+		$ mongoimport --collection element_type --file db_collections/DearWeb2004ElementType.json
+		$ mongoimport --collection stylesDB --file db_collections/DearWeb2004StyleDB.json
+		$ mongoimport --collection colorsDB --file db_collections/DearWeb2004ColorsDB.json
 
 
 ## To run the application on your own Heroku account:##

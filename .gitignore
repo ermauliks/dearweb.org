@@ -89,3 +89,7 @@ Icon
 .bundle
 .gist-cache
 # /Other ignores
+
+
+# IDEA ignores
+.idea

@@ -1,8 +1,8 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/ElementTypeModel", "views/HeaderView", "views/FooterView","views/IndexView","views/ElementTypeView", "views/ButtonView" , "views/admin/AdminListView", "views/NewEditStyleView", "views/ButtonListView","views/ElementTypeListView","collections/Collection"],
+define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/ElementTypeModel", "models/ColorsModel" , "views/HeaderView", "views/FooterView","views/IndexView","views/ElementTypeView", "views/ColorsListView","views/ButtonView" , "views/admin/AdminListView", "views/NewEditStyleView", "views/ButtonListView","views/ElementTypeListView","collections/Collection"],
         
-    function($, Backbone, Model,NewEditView, ElementTypeModel, HeaderView, FooterView, IndexView, ElementTypeView, ButtonView, AdminListView, NewEditStyleView, ButtonListView,ElementTypeListView, Collection) {
+    function($, Backbone, Model,NewEditView, ElementTypeModel,ColorsModel, HeaderView, FooterView, IndexView, ElementTypeView, ColorsListView, ButtonView, AdminListView, NewEditStyleView, ButtonListView,ElementTypeListView, Collection) {
         var DesktopRouter = Backbone.Router.extend({
             initialize: function() {
                 // Tells Backbone to start watching for hashchange events
@@ -26,14 +26,27 @@ define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/
                 new IndexView();
 
                 var elementTypes = new ElementTypeModel();
+                
                 //Get the documents/records
                 elementTypes.fetch({
                     success:function (data) {  
                         //Instantiate ElementTypeListView generate buttons dynamically 
+                        console.log("In Elements")
                         new ElementTypeListView(data.toJSON());
                     }
-                })     
+                });     
+
+              var colors = new ColorsModel();
+                colors.fetch({
+                    success:function (data) {
+                        //Instantiate ColorsListView generate colors dynamically
+                        console.log("In Colors");
+                        console.log("Error Fetching Colors", data.toJSON());
+                        new ColorsListView(data.toJSON());
+                    }
+                });  
             },
+
             elements: function() {
                 //Instantiate the model
                 var styles = new Model();

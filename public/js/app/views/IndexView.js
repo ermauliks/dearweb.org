@@ -38,10 +38,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
             },
 
             init: function(){
-                $('.colorbox span').each(function(){
-                    $(this).attr('style','background-color:'+ $(this).text() + ';color:'+ $(this).text());
-
-                })
+                
                 $('div.combobox').each(function(){
                     $(this).find('div').hide();
                     $(this).find('span').live('click',function(){
