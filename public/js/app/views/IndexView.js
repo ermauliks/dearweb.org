@@ -1,8 +1,8 @@
 // View.js - index.html listing for users
 // -------
-define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html", "rivets"],
+define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html"],
 
-    function($, Backbone, Model, template, rivets){
+    function($, Backbone, Model, template){
 
         var IndexView = Backbone.View.extend({
 
@@ -15,21 +15,6 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
                 // Calls the view's render method
                 this.render();
                 this.init();
-
-                rivets.adapters[':'] = {
-                    subscribe: function(obj, keypath, callback) {
-                        obj.on('change:' + keypath, callback);
-                    },
-                    unsubscribe: function(obj, keypath, callback) {
-                        obj.off('change:' + keypath, callback);
-                    },
-                    read: function(obj, keypath) {
-                        return obj.get(keypath);
-                    },
-                    publish: function(obj, keypath, value) {
-                        obj.set(keypath, value);
-                    }
-                }
             },
 
             // View Event Handlers
@@ -38,7 +23,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
             },
 
             init: function(){
-                
+
                 $('div.combobox').each(function(){
                     $(this).find('div').hide();
                     $(this).find('span').live('click',function(){
@@ -47,16 +32,6 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
                     });
                     $(this).on('mouseover', function(){$(this).find('div').show();})
                            .on('mouseout', function(){$(this).find('div').hide();})
-                });
-
-                var buttonGoModel = new Backbone.Model({
-                    searchUrl: "/elements"
-                });
-
-                var buttonGo = $("#button-go");
-
-                rivets.bind(buttonGo, {
-                    buttonGo: buttonGoModel
                 });
             },
 
