@@ -1,4 +1,4 @@
-{ "_id" : { "$oid" : "516c48631f6c263a24fbbe7a" }, "id" : 1, "name" : "Buttons" }
-{ "_id" : { "$oid" : "516c4a211f6c263a24fbbe7b" }, "id" : 2, "name" : "Dropdowns" }
-{ "_id" : { "$oid" : "516c4a3d1f6c263a24fbbe7c" }, "id" : 3, "name" : "Radio-buttons" }
-{ "_id" : { "$oid" : "516c4a4d1f6c263a24fbbe7d" }, "id" : 4, "name" : "Check-boxes" }
+{ "_id" : { "$oid" : "516c48631f6c263a24fbbe7a" }, "id" : 1, "name" : "Buttons", "uri": "buttons" }
+{ "_id" : { "$oid" : "516c4a211f6c263a24fbbe7b" }, "id" : 2, "name" : "Dropdowns", "uri": "dropdowns" }
+{ "_id" : { "$oid" : "516c4a3d1f6c263a24fbbe7c" }, "id" : 3, "name" : "Radio-buttons", "uri": "radio-buttons" }
+{ "_id" : { "$oid" : "516c4a4d1f6c263a24fbbe7d" }, "id" : 4, "name" : "Check-boxes", "uri": "check-boxes" }

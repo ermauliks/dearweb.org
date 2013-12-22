@@ -9,6 +9,10 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
             // The DOM Element associated with this view
             el: ".page",
 
+            components: {
+                goButton: null
+            },
+
             // View constructor
             initialize: function() {
 
@@ -23,12 +27,16 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
             },
 
             init: function(){
+                var thisView = this;
 
                 $('div.combobox').each(function(){
                     $(this).find('div').hide();
                     $(this).find('span').live('click',function(){
                         $(this).parent().parent().find('h3').text($(this).text());
                         $(this).parent().hide();
+
+                        // Update the Go button URL based on current selection (i.e. `href` attribute)
+                        thisView.updateGoButton($(this).children(":first").data("uri"));
                     });
                     $(this).on('mouseover', function(){$(this).find('div').show();})
                            .on('mouseout', function(){$(this).find('div').hide();})
@@ -51,8 +59,24 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
 
             doSearch: function () {
 
-            }
+            },
 
+            updateGoButton: function (componentUri) {
+                var thisView = this;
+
+                thisView.components.goButton = thisView.components.goButton || {
+                    el: $("#button-go"),
+                    url: {
+                        template: "/elements/{{componentUri}}",
+                        rendered: null
+                    }
+                };
+
+                var goBtn = thisView.components.goButton;
+
+                goBtn.url.rendered = goBtn.url.template.replace("{{componentUri}}", componentUri);
+                goBtn.el.attr("href", goBtn.url.rendered);
+            }
         });
 
         // Returns the View class
