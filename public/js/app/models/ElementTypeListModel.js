@@ -11,9 +11,6 @@ define(["jquery", "backbone"],
 
             // Model Constructor
             initialize: function(options) {
-                if(options != undefined && options.id != undefined) {
-                  this.url=this.url + "/" + options.id;
-                }
             },
 
             // Default values for all of the Model attributes

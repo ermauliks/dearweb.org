@@ -29,6 +29,7 @@ define(["jquery", "backbone", "models/ButtonsCollection", "views/ButtonView", "v
 
             // Renders the view's template to the UI
             render: function() {
+                this.$el.html('');
                 _.each( this.data, function( item ) {
                     if(item.element_type == '1'){
                         this.renderButton( item );

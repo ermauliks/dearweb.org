@@ -67,7 +67,7 @@ define(["jquery", "backbone", "models/Model", "text!templates/indexTemplate.html
                 thisView.components.goButton = thisView.components.goButton || {
                     el: $("#button-go"),
                     url: {
-                        template: "/elements/{{componentUri}}",
+                        template: "#/type/{{componentUri}}",
                         rendered: null
                     }
                 };
