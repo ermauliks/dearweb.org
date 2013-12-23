@@ -1,18 +1,18 @@
+// ElementsTypeModel.js
+// --------
 define(["jquery", "backbone"],
-
 
     function($, Backbone) {
 
         // Creates a new Backbone Model class object
-        var ElementTypeModel = Backbone.Model.extend({
+        var Model = Backbone.Model.extend({
 
-            
-            url: '/getElementList',
+            url : '/type',
 
             // Model Constructor
             initialize: function(options) {
-                if(options != undefined && options.id != undefined) {
-                  this.url=this.url + "/" + options.id;
+                if(options != undefined && options.id != undefined){
+                    this.url= this.url + "/" + options.id;
                 }
             },
 
@@ -29,7 +29,7 @@ define(["jquery", "backbone"],
         });
 
         // Returns the Model class
-        return ElementTypeModel;
+        return Model;
 
     }
 

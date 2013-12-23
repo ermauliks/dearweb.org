@@ -1,4 +1,4 @@
-// Model.js
+// ElementsModel.js
 // --------
 define(["jquery", "backbone"],
 

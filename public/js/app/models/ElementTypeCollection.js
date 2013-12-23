@@ -1,12 +1,12 @@
 // ElementTypeCollection.js
 // --------
-define(["jquery", "backbone", "models/ElementTypeModel"],
+define(["jquery", "backbone", "models/ElementTypeListModel"],
 
-    function($, Backbone, ElementTypeModel) {
+    function($, Backbone, ElementTypeListModel) {
 
         // Creates a new Backbone Model class object
         var ElementTypeCollection = Backbone.Collection.extend({
-            model: ElementTypeModel
+            model: ElementTypeListModel
         });
 
         // Returns the Collection class

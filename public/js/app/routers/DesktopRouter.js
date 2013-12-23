@@ -1,8 +1,8 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/ElementTypeModel", "models/ColorsModel" , "views/HeaderView", "views/FooterView","views/IndexView","views/ElementTypeView", "views/ColorsListView","views/ButtonView" , "views/admin/AdminListView", "views/NewEditStyleView", "views/ButtonListView","views/ElementTypeListView","collections/Collection"],
+define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/ElementsTypeModel", "models/ElementTypeListModel" ,"models/ElementsModel", "models/ColorsModel" , "views/HeaderView", "views/FooterView","views/IndexView","views/ElementTypeView", "views/ColorsListView","views/ButtonView" , "views/admin/AdminListView", "views/NewEditStyleView", "views/ButtonListView","views/ElementTypeListView","collections/Collection"],
         
-    function($, Backbone, Model,NewEditView, ElementTypeModel,ColorsModel, HeaderView, FooterView, IndexView, ElementTypeView, ColorsListView, ButtonView, AdminListView, NewEditStyleView, ButtonListView,ElementTypeListView, Collection) {
+    function($, Backbone, Model, NewEditView, ElementsTypeModel, ElementTypeListModel, ElementsModel ,ColorsModel, HeaderView, FooterView, IndexView, ElementTypeView, ColorsListView, ButtonView, AdminListView, NewEditStyleView, ButtonListView,ElementTypeListView, Collection) {
         var DesktopRouter = Backbone.Router.extend({
             initialize: function() {
                 // Tells Backbone to start watching for hashchange events
@@ -16,16 +16,17 @@ define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/
                 // When there is no hash on the url, the home method is called
                 "": "index",
                 "elements": "elements",
-                "elements/:elementType": "listSpecificElements",
-                "elements/:elementType/:color": "listSpecificElementsWithColor",
+                "type/:elementType": "listElementsByType",
+                // "elements/:elementType/:color": "listSpecificElementsWithColor",
                 "admin": "home",
                 "admin/edit/:id": "edit",
                 "admin/new": "edit"
             },
+            
             index: function() {
                 new IndexView();
 
-                var elementTypes = new ElementTypeModel();
+                var elementTypes = new ElementTypeListModel();
                 
                 //Get the documents/records
                 elementTypes.fetch({
@@ -49,9 +50,9 @@ define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/
 
             elements: function() {
                 //Instantiate the model
-                var styles = new Model();
+                var allElements = new ElementsModel();
                 //Get the documents/records
-                styles.fetch({
+                allElements.fetch({
                     success:function (data) {  
                         //Instantiate ButtonListView generate buttons dynamically 
                         new ButtonListView(data.toJSON());
@@ -59,14 +60,14 @@ define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/
                 })                
             },
 
-            listSpecificElements: function(elementType) {
+            listElementsByType: function(elementType) {
             
                 var options = new Object();
                 options.id = elementType;
+                console.log(options);
+                var elementsByType = new ElementsTypeModel(options);
 
-                var specificElementModel = new Model(options);
-
-                specificElementModel.fetch({
+                elementsByType.fetch({
                     success:function (data) {
                         //Instantiate ButtonListView generate buttons dynamically
                         new ButtonListView(data.toJSON());
@@ -76,7 +77,7 @@ define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/
 
             },            
             listSpecificElementsWithColor: function(elementType, color) {
-                alert('we will search ' + elementType + ' with ' + color);           
+                // alert('we will search ' + elementType + ' with ' + color);           
             },
             home: function() {
                 new AdminListView();

@@ -87,11 +87,11 @@ server.configure(function() {
 
 // SERVER
 // ======
-//Function returns all the styles
-var listStyles = function (req, res) {
+//Function returns all the Elements
+var listAllElements = function (req, res) {
 //Create the CSS file - button.css which will be at front-end
 createCssFile();
- db.collection('stylesDB', function(err, collection) {
+db.collection('stylesDB', function(err, collection) {
        collection.find().toArray(function(err, items) {            
            res.send(items);
        });
@@ -116,9 +116,17 @@ var listsColors  = function (req, res) {
    });
 }
 
-var searchElements = function(req, res){
+var listElementsByType = function(req, res){
    db.collection('stylesDB', function(err, collection) {
-       collection.find({ input_type: req.params.id}).toArray(function(err, items) {            
+       collection.find({ input_type: req.params.elementType}).toArray(function(err, items) {            
+           res.send(items);
+       });
+   });
+}
+
+var listElementsByColor = function(req, res){
+   db.collection('colorsDB', function(err, collection) {
+       collection.find({ name: req.params.color}).toArray(function(err, items) {            
            res.send(items);
        });
    });
@@ -142,7 +150,7 @@ var createStyle = function (req, res) {
 }
 
 //Function returns style details based on id
-var styleDetails = function (req, res) {
+var elementDetails = function (req, res) {
  var id = req.params.id;
    console.log('Retrieving style: ' + id);
    db.collection('stylesDB', function(err, collection) {
@@ -214,12 +222,16 @@ var createCssFile = function () {
 };
 
 
-server.get('/styles', listStyles);
-server.get('/styles/:id', searchElements);
+server.get('/elements', listAllElements); // All elements
+server.get('/elements/:id', elementDetails); //Specific Element 
+server.get('/type/:elementType', listElementsByType); // Filtering by Type. eg button 
+server.get('/color/:color', listElementsByColor); //Filtering by color. eg Red
+
+
 server.get('/getElementList', listsElements);
-server.del('/styles/:id', deleteStyle);
-server.post('/styles', createStyle);
-server.put('/styles/:id', updateStyle);
+server.del('/elements/:id', deleteStyle);
+server.post('/elements', createStyle);
+server.put('/elements/:id', updateStyle);
 server.get('/getColorsList', listsColors);
 
 // Start Node.js Server

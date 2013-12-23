@@ -48,8 +48,8 @@
     </fieldset>
     
     <button type="submit" class="btn btn-success"><%= sData ? 'Update' : 'Create' %></button>
-<!--     <% if(sData) { %>
+    <% if(sData) { %>
         <input type="hidden" name="id" value=<%= htmlEncode(sData._id) %> />
-        <button type="button" data-style-id=<%= htmlEncode(sData._id) %> class="btn btn-danger delete">Delete</button>
-   <% }; %> -->
+        <!-- <button type="button" data-style-id=<%= htmlEncode(sData._id) %> class="btn btn-danger delete">Delete</button> -->
+   <% }; %>
 </form>

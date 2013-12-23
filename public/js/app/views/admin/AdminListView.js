@@ -1,8 +1,8 @@
 // View.js
 // -------
-define(["jquery", "backbone", "models/Styles", "models/Model", "text!templates/adminListStyle.html", "views/DisplayCssView",'views/NewEditStyleView'],
+define(["jquery", "backbone", "models/ElementsModel","text!templates/adminListStyle.html",'views/NewEditStyleView'],
 
-    function($, Backbone, Styles, Model, template, DisplayCssView, NewEditStyleView){
+    function($, Backbone, ElementsModel, template, NewEditStyleView){
 
         var AdminListView = Backbone.View.extend({
 
@@ -19,7 +19,7 @@ define(["jquery", "backbone", "models/Styles", "models/Model", "text!templates/a
 
             // View Event Handlers
             events: {
-             'click .delete': 'deleteStyle',
+             'click .delete': 'deleteElement',
               "click .edit" : "showEditDialog",
               "click .new" : "addNew"
             },
@@ -38,8 +38,8 @@ define(["jquery", "backbone", "models/Styles", "models/Model", "text!templates/a
             // Renders the view's template to the UI
             render: function() {
                 var that = this;
-                var styles = new Styles();
-                styles.fetch({
+                var elements = new ElementsModel();
+                elements.fetch({
                     success:function (data) {
                        // Setting the view's template property using the Underscore template method
                        that.template = _.template(template, {stylesData: data.toJSON()});
@@ -52,10 +52,10 @@ define(["jquery", "backbone", "models/Styles", "models/Model", "text!templates/a
                 return this;
 
             },
-            deleteStyle: function (ev) { 
+            deleteElement: function (ev) { 
                 var id = $(ev.currentTarget).attr('data-style-id');
                 var that = this;  
-                that.style = new Model({"id": id});                 
+                that.style = new ElementsModel({"id": id});                 
                 that.style.destroy({
                   success: function () {
                         location.reload(true);

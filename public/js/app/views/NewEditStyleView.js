@@ -1,8 +1,8 @@
 // View.js
 // -------
-define(["jquery","angular", "backbone", "models/Model","views/ModalView",  "text!templates/newEditStyle.html"],
+define(["jquery","angular", "backbone", "models/ElementsModel","views/ModalView",  "text!templates/newEditStyle.html"],
 
-    function($, angular,Backbone, Model,ModalView, template){
+    function($, angular,Backbone, ElementsModel,ModalView, template){
 
         var newEditView = ModalView.extend({
 
@@ -18,16 +18,16 @@ define(["jquery","angular", "backbone", "models/Model","views/ModalView",  "text
             // el: '.page',
 
             events: {
-              'submit .edit-styles-form': 'saveStyles'
+              'submit .edit-styles-form': 'saveElement'
             },
 
 
             // Renders the view's template to the UI
             render: function (options) {   
                 var that = this;
-                console.log(that.id);
                 if(that.id) {
-                    that.style = new Model({"id": that.id});                    
+
+                    that.style = new ElementsModel({"id": that.id});                    
                     that.style.fetch({
                         success: function(style) {
                             that.template = _.template(template, {sData:style.toJSON()});
@@ -44,17 +44,19 @@ define(["jquery","angular", "backbone", "models/Model","views/ModalView",  "text
                 return this;
             },
 
-            saveStyles: function(ev) {
-                var styleDetails = $(ev.currentTarget).serializeObject(),
-                    _id = null;
+            saveElement: function(ev) {
+                var elementDetails = $(ev.target).serializeObject(),
+                    _id = null; 
 
-                if(styleDetails.id != undefined){
-                     _id = styleDetails.id;
+                console.log(elementDetails);
+
+                if(elementDetails.id != undefined){
+                     _id = elementDetails.id;
                 }
                 
-                //Model object                
-                var style = new Model({"id": _id});
-                style.save(styleDetails, {
+                //Model object             
+                var element = new ElementsModel({"id": _id});
+                element.save(elementDetails, {
                     success: function (data) {                        
                         
                     }
