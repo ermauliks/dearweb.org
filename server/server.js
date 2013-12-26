@@ -116,9 +116,17 @@ var listsColors  = function (req, res) {
    });
 }
 
+var getElementTemplate = function(req,res){
+  db.collection('element_template_collection', function(err, collection) {
+       collection.find({ element_type: req.params.elementType}).toArray(function(err, items) {            
+           res.send(items);
+       });
+   });  
+}
+
 var listElementsByType = function(req, res){
    db.collection('stylesDB', function(err, collection) {
-       collection.find({ input_type: req.params.elementType}).toArray(function(err, items) {            
+       collection.find({ element_type: req.params.elementType}).toArray(function(err, items) {            
            res.send(items);
        });
    });
@@ -226,6 +234,7 @@ server.get('/elements', listAllElements); // All elements
 server.get('/elements/:id', elementDetails); //Specific Element 
 server.get('/type/:elementType', listElementsByType); // Filtering by Type. eg button 
 server.get('/color/:color', listElementsByColor); //Filtering by color. eg Red
+server.get('/getElementTemplate/:elementType', getElementTemplate);
 
 
 server.get('/getElementList', listsElements);

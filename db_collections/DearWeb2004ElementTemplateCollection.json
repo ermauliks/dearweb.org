@@ -1,0 +1,4 @@
+{ "_id" : ObjectId("52b8437f64abfdb10c53a6fc"), "template" : "<button class=\"\">abc</button>", "element_type" : "button" }
+{ "_id" : ObjectId("52b8446d64abfdb10c53a6fd"), "template" : "<select class=\"\">\n\t<option>abc</option>\n\t<option>abc</option>\n\t<option>abc</option>\n</select>", "element_type" : "dropdown" }
+{ "_id" : ObjectId("52b844d164abfdb10c53a6fe"), "template" : "<input type=\"radio\" class=\"\">abc</input>", "element_type" : "radio-button" }
+{ "_id" : ObjectId("52b844e964abfdb10c53a6ff"), "template" : "<input type=\"checkbox\" class=\"\">abc</input>", "element_type" : "check-box" }

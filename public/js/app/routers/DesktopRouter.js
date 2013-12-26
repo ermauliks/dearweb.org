@@ -1,8 +1,8 @@
 // DesktopRouter.js
 // ----------------
-define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/ElementsTypeModel", "models/ElementTypeListModel" ,"models/ElementsModel", "models/ColorsModel" , "views/HeaderView", "views/FooterView","views/IndexView","views/ElementTypeView", "views/ColorsListView","views/ButtonView" , "views/admin/AdminListView", "views/NewEditStyleView", "views/ButtonListView","views/ElementTypeListView","collections/Collection"],
+define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/ElementsTypeModel", "models/ElementTypeListModel" ,"models/ElementsModel", "models/ColorsModel" , "views/HeaderView", "views/FooterView","views/IndexView","views/ElementTypeView", "views/ColorsListView","views/ButtonView" , "views/admin/AdminListView", "views/ButtonListView","views/ElementTypeListView","collections/Collection"],
         
-    function($, Backbone, Model, NewEditView, ElementsTypeModel, ElementTypeListModel, ElementsModel ,ColorsModel, HeaderView, FooterView, IndexView, ElementTypeView, ColorsListView, ButtonView, AdminListView, NewEditStyleView, ButtonListView,ElementTypeListView, Collection) {
+    function($, Backbone, Model, NewEditStyleView, ElementsTypeModel, ElementTypeListModel, ElementsModel ,ColorsModel, HeaderView, FooterView, IndexView, ElementTypeView, ColorsListView, ButtonView, AdminListView, ButtonListView,ElementTypeListView, Collection) {
         var DesktopRouter = Backbone.Router.extend({
             initialize: function() {
                 // Tells Backbone to start watching for hashchange events
@@ -83,7 +83,7 @@ define(["jquery","backbone", "models/Model", "views/NewEditStyleView" , "models/
                 new AdminListView();
             },
             edit: function(id) {
-                new NewEditView({"id":id});
+                new NewEditStyleView({"id":id});
             },
             tracking: function() {
                   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

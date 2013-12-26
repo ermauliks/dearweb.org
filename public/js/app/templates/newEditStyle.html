@@ -4,9 +4,10 @@
     <fieldset>
         <label>Element Type</label>
         <select name='element_type' id='elementList'>
-          <option <%= htmlEncode(sData.element_type) == 1 ? 'selected' : '' %> value="1">Buttons</option>
-          <option <%= htmlEncode(sData.element_type) == 2 ? 'selected' : '' %> value="2">Dropdowns</option>
-          <option <%= htmlEncode(sData.element_type) == 3 ? 'selected' : '' %> value="3">Radio-buttons</option>
+          <option value="default-value">Select Elements</option>
+          <option <%= htmlEncode(sData.element_type) == 'button' ? 'selected' : '' %> value="button">Buttons</option>
+          <option <%= htmlEncode(sData.element_type) == 'dropdown' ? 'selected' : '' %> value="dropdown">Dropdowns</option>
+          <option <%= htmlEncode(sData.element_type) == 'radio-button' ? 'selected' : '' %> value="radio-button">Radio-buttons</option>
         </select> 
 
         <input type='text' name="class" value='<%= sData ? htmlEncode(sData.class) : '' %>' placeholder='Class Name'/>
@@ -14,7 +15,7 @@
     </fieldset>
 
     <fieldset>
-        <textarea name="element_html" style='width:99%; height:100px;'  placeholder='place your html here'><%= sData ? htmlEncode(sData.element_html) : '' %></textarea>
+        <div contenteditable='true' id="element_html" style='border:1px solid #ccc; width:99%; height:100px;'  placeholder='Select element from dropdown'><%= sData ? htmlEncode(sData.element_html) : '' %></div>
     </fieldset>
 
     <fieldset>
@@ -22,19 +23,19 @@
             <tr>
                 <td>
                      <label>Class CSS</label>
-                    <textarea style='width:96%' name="class_css" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_css) : '' %></textarea>
+                    <textarea id="class_css" style='width:96%' name="class_css" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_css) : '' %></textarea>
                 </td>
                 <td>
                     <label>Class Hover</label>
-                    <textarea style='width:96%' name="class_hover" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_hover) : '' %></textarea>
+                    <textarea id="class_hover" style='width:96%' name="class_hover" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_hover) : '' %></textarea>
                </td>
                 <td>                
                     <label>Class Active</label>
-                    <textarea style='width:96%' name="class_active" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_active) : '' %></textarea>
+                    <textarea id="class_active" style='width:96%' name="class_active" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_active) : '' %></textarea>
                </td>
                 <td>                
                     <label>Class Disabled</label>
-                    <textarea style='width:96%' name="class_disabled" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_disabled) : '' %></textarea>
+                    <textarea id="class_disabled" style='width:96%' name="class_disabled" rows="5" cols="17"><%= sData ? htmlEncode(sData.class_disabled) : '' %></textarea>
                 
                 </td>
             </tr>

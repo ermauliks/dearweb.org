@@ -31,10 +31,10 @@ define(["jquery", "backbone", "models/ButtonsCollection", "views/ButtonView", "v
             render: function() {
                 this.$el.html('');
                 _.each( this.data, function( item ) {
-                    if(item.element_type == '1'){
+                    if(item.element_type == 'button'){
                         this.renderButton( item );
                      }
-                    else if(item.element_type == '2'){
+                    else if(item.element_type == 'dropdown'){
                         this.renderDropDown( item );
                     }
                     

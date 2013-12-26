@@ -23,6 +23,7 @@ You may find a demo [here](http://dearweb.herokuapp.com/#/elements).
 		$ mongoimport --collection element_type --file db_collections/DearWeb2004ElementType.json
 		$ mongoimport --collection stylesDB --file db_collections/DearWeb2004StyleDB.json
 		$ mongoimport --collection colorsDB --file db_collections/DearWeb2004ColorsDB.json
+		$ mongoimport --collection element_template_collection --file db_collections/DearWeb2004ElementTemplateCollection.json
 
 
 ## To run the application on your own Heroku account:##
