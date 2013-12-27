@@ -31,7 +31,16 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
                     that.elementTemplate = new ElementTemplateModel({"id": selectedElement});                    
                     that.elementTemplate.fetch({
                         success: function(style) {
-                            that.updateHTMLContent(style.attributes[0].template);
+                            var htmlContent = style.toJSON()[0].template;
+                            var cssClass = style.toJSON()[0].css_selector;
+                            var classText = $('body').find("input[name='class']").val();
+                            var regExp = new RegExp("class=\"", "g");
+                            htmlContent=htmlContent.replace(regExp,"class=\""+classText);
+                            that.updateHTMLContent(htmlContent);
+                            var classText = classText.split(' ').join('.');
+                            $('#class_css').val(cssClass+"."+classText+"{\n\n}"); 
+                            $('#class_hover').val(cssClass+"."+classText+":hover{\n\n}");
+                            $('#class_active').val(cssClass+"."+classText+":active{\n\n}");       
                         }
                     });
                             
@@ -42,17 +51,29 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
 
             assignClass: function(){
                 var that = this;
-                var reg = "class=\"";
+                var reg = "class=\"[^\"]*";
+                
                 $('body').find("input[name='class']").live('keyup', function(){
-                    var classText = $(this).val();
-                    var htmlContent = $('#element_html').text();
-                    var regExp = new RegExp(reg, "g");
-                    htmlContent=htmlContent.replace(regExp,"class=\""+classText);
-                    $('#element_html').text(htmlContent);
-                    $('#class_css').val("."+classText+"{\n\n}");
-                    $('#class_hover').val("."+classText+":hover{\n\n}");
-                    $('#class_active').val("."+classText+":active{\n\n}");
-                    reg = "class=\"" + classText;
+                    var selectedElement = $("#elementList option:selected").val();    
+                    that.elementTemplate = new ElementTemplateModel({"id": selectedElement});                    
+                    that.elementTemplate.fetch({
+                        success: function(style) {
+                            var cssClass = style.toJSON()[0].css_selector;
+                            var classText = $("input[name='class']").val().trim();
+                            classText = classText.replace(/\s+/g,' ');
+                            var htmlContent = $('#element_html').text();
+                            var regExp = new RegExp(reg, "g");
+                            htmlContent=htmlContent.replace(regExp,"class=\""+classText);
+                            that.updateHTMLContent(htmlContent);
+                            var classText = classText.split(' ').join('.');
+                            $('#class_css').val(cssClass+"."+classText+"{\n\n}");
+                            $('#class_hover').val(cssClass+"."+classText+":hover{\n\n}");
+                            $('#class_active').val(cssClass+"."+classText+":active{\n\n}");
+                            reg = "class=\"" + classText;
+                        }
+                    });
+
+                    
                 }); 
             },
 
@@ -64,8 +85,21 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
                     that.style = new ElementsModel({"id": that.id});                    
                     that.style.fetch({
                         success: function(style) {
-                            that.template = _.template(template, {sData:style.toJSON()});
+                            var sData = style.toJSON();
+                            var elementType = sData.element_type;
+                            var classText = sData.class;
+                            that.template = _.template(template, {sData:sData});
                             that.$el.html(that.template);
+
+                            that.elementTemplate = new ElementTemplateModel({"id": elementType});                    
+                            that.elementTemplate.fetch({
+                                success: function(style) {
+                                    var htmlContent = style.toJSON()[0].template;
+                                    var regExp = new RegExp("class=\"", "g");
+                                    htmlContent=htmlContent.replace(regExp,"class=\""+classText); 
+                                    that.updateHTMLContent(htmlContent);
+                                }
+                            });
                         }
                     }); 
                                              
@@ -88,6 +122,7 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
                 
                 //Model object             
                 var element = new ElementsModel({"id": _id});
+                console.log(element);
                 element.save(elementDetails, {
                     success: function (data) {                        
                         
@@ -107,10 +142,10 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
                     }
                 };
 
-                var goBtn = thisView.components.HTMLTextArea;
+                var htmlArea = thisView.components.HTMLTextArea;
 
-                goBtn.element_html.rendered = goBtn.element_html.template.replace("{{selectedElement}}", selectedElement);
-                goBtn.el.text(goBtn.element_html.rendered);
+                htmlArea.element_html.rendered = htmlArea.element_html.template.replace("{{selectedElement}}", selectedElement);
+                htmlArea.el.text(htmlArea.element_html.rendered);
             }
 
         });
