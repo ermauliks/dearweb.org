@@ -40,7 +40,8 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
                             var classText = classText.split(' ').join('.');
                             $('#class_css').val(cssClass+"."+classText+"{\n\n}"); 
                             $('#class_hover').val(cssClass+"."+classText+":hover{\n\n}");
-                            $('#class_active').val(cssClass+"."+classText+":active{\n\n}");       
+                            $('#class_active').val(cssClass+"."+classText+":active{\n\n}");
+                            $('#class_disabled').val(cssClass+"."+classText+".disabled:active{\n\n}");
                         }
                     });
                             
@@ -53,11 +54,22 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
                 var that = this;
                 var reg = "class=\"[^\"]*";
                 
+
                 $('body').find("input[name='class']").live('keyup', function(){
                     var selectedElement = $("#elementList option:selected").val();    
                     that.elementTemplate = new ElementTemplateModel({"id": selectedElement});                    
                     that.elementTemplate.fetch({
                         success: function(style) {
+                            
+                            var cssRegExp = new RegExp("{[^]*}", "g");
+                            var class_css = cssRegExp.exec($('#class_css').val());
+                            cssRegExp = new RegExp("{[^]*}", "g");
+                            var class_hover = cssRegExp.exec($('#class_hover').val());
+                            cssRegExp = new RegExp("{[^]*}", "g");
+                            var class_active = cssRegExp.exec($('#class_active').val());
+                            cssRegExp = new RegExp("{[^]*}", "g");
+                            var class_disabled = cssRegExp.exec($('#class_disabled').val());
+
                             var cssClass = style.toJSON()[0].css_selector;
                             var classText = $("input[name='class']").val().trim();
                             classText = classText.replace(/\s+/g,' ');
@@ -65,16 +77,25 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
                             var regExp = new RegExp(reg, "g");
                             htmlContent=htmlContent.replace(regExp,"class=\""+classText);
                             that.updateHTMLContent(htmlContent);
-                            var classText = classText.split(' ').join('.');
-                            $('#class_css').val(cssClass+"."+classText+"{\n\n}");
-                            $('#class_hover').val(cssClass+"."+classText+":hover{\n\n}");
-                            $('#class_active').val(cssClass+"."+classText+":active{\n\n}");
+                            classText = classText.split(' ').join('.');
+
+                            $('#class_css').val(cssClass+"."+classText+class_css);
+                            $('#class_hover').val(cssClass+"."+classText+":hover"+class_hover);
+                            $('#class_active').val(cssClass+"."+classText+":active"+class_active);
+                            $('#class_disabled').val(cssClass+"."+classText+".disabled:active"+class_disabled);
                             reg = "class=\"" + classText;
                         }
                     });
 
                     
                 }); 
+            },
+
+            getCssData: function(){
+                var class_css = $('#class_css').val();
+                var regExp = new RegExp("{[^]*}", "g");
+                var m =regExp.exec(class_css);
+                return m[0];
             },
 
             // Renders the view's template to the UI
@@ -134,7 +155,7 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
             updateHTMLContent: function (selectedElement) {
                 var thisView = this;
 
-                thisView.components.HTMLTextArea = thisView.components.HTMLTextArea || {
+                thisView.components.HTMLTextArea = {
                     el: $("#element_html"),
                     element_html: {
                         template: "{{selectedElement}}",
@@ -143,7 +164,6 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
                 };
 
                 var htmlArea = thisView.components.HTMLTextArea;
-
                 htmlArea.element_html.rendered = htmlArea.element_html.template.replace("{{selectedElement}}", selectedElement);
                 htmlArea.el.text(htmlArea.element_html.rendered);
             }
