@@ -78,7 +78,16 @@ define(["jquery","angular", "backbone", "models/ElementsModel", "models/ElementT
                             htmlContent=htmlContent.replace(regExp,"class=\""+classText);
                             that.updateHTMLContent(htmlContent);
                             classText = classText.split(' ').join('.');
-
+                            
+                            if(class_css == null)
+                                class_css="{\n\n}"
+                            if(class_hover == null)
+                                class_hover="{\n\n}"
+                            if(class_active == null)
+                                class_active="{\n\n}"
+                            if(class_disabled == null)
+                                class_disabled="{\n\n}"
+                            
                             $('#class_css').val(cssClass+"."+classText+class_css);
                             $('#class_hover').val(cssClass+"."+classText+":hover"+class_hover);
                             $('#class_active').val(cssClass+"."+classText+":active"+class_active);
